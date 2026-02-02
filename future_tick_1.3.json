@@ -1,0 +1,446 @@
+[ {
+  "key" : "future_tick_C",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"C2601\",\"exchange\":\"DCE\",\"open\":2109.0,\"high\":2115.0,\"low\":2109.0,\"preClose\":2111.0,\"lastPrice\":2114.0,\"last\":null,\"underlyingSymbol\":\"C\",\"volume\":58265,\"tickTime\":\"1761829968133\",\"openInterest\":950173.0,\"priceChangeRatio\":0.001421,\"priceDifference\":3.0,\"preSettlement\":2113.0,\"ask1\":2114.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":893,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":2113.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":4275,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_SM",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SM2601\",\"exchange\":\"CZCE\",\"open\":5848.0,\"high\":5884.0,\"low\":5822.0,\"preClose\":5852.0,\"lastPrice\":5842.0,\"last\":null,\"underlyingSymbol\":\"SM\",\"volume\":178345,\"tickTime\":\"1761807605866\",\"openInterest\":339837.0,\"priceChangeRatio\":-0.001709,\"priceDifference\":-10.0,\"preSettlement\":5828.0,\"ask1\":5844.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":137,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":5840.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":30,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_L",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"L2601\",\"exchange\":\"DCE\",\"open\":6968.0,\"high\":6985.0,\"low\":6966.0,\"preClose\":6968.0,\"lastPrice\":6972.0,\"last\":null,\"underlyingSymbol\":\"L\",\"volume\":19677,\"tickTime\":\"1761829968133\",\"openInterest\":508053.0,\"priceChangeRatio\":0.000574,\"priceDifference\":4.0,\"preSettlement\":6998.0,\"ask1\":6973.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":87,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":6972.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":86,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_HC",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"HC2601\",\"exchange\":\"SHFE\",\"open\":3319.0,\"high\":3322.0,\"low\":3312.0,\"preClose\":3318.0,\"lastPrice\":3319.0,\"last\":null,\"underlyingSymbol\":\"HC\",\"volume\":42459,\"tickTime\":\"1761829968133\",\"openInterest\":1474429.0,\"priceChangeRatio\":0.000301,\"priceDifference\":1.0,\"preSettlement\":3332.0,\"ask1\":3320.0,\"ask2\":3321.0,\"ask3\":3322.0,\"ask4\":3323.0,\"ask5\":3324.0,\"askVol1\":1056,\"askVol2\":587,\"askVol3\":689,\"askVol4\":499,\"askVol5\":548,\"bid1\":3319.0,\"bid2\":3318.0,\"bid3\":3317.0,\"bid4\":3316.0,\"bid5\":3315.0,\"bidVol1\":307,\"bidVol2\":809,\"bidVol3\":915,\"bidVol4\":809,\"bidVol5\":2374}"
+}, {
+  "key" : "future_tick_SC",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SC2512\",\"exchange\":\"INE\",\"open\":458.4,\"high\":458.4,\"low\":456.6,\"preClose\":458.9,\"lastPrice\":458.0,\"last\":null,\"underlyingSymbol\":\"SC\",\"volume\":6466,\"tickTime\":\"1761829968076\",\"openInterest\":31831.0,\"priceChangeRatio\":-0.001961,\"priceDifference\":-0.9,\"preSettlement\":462.5,\"ask1\":458.0,\"ask2\":458.1,\"ask3\":458.2,\"ask4\":458.3,\"ask5\":458.4,\"askVol1\":17,\"askVol2\":40,\"askVol3\":36,\"askVol4\":17,\"askVol5\":20,\"bid1\":457.9,\"bid2\":457.8,\"bid3\":457.7,\"bid4\":457.6,\"bid5\":457.5,\"bidVol1\":12,\"bidVol2\":28,\"bidVol3\":23,\"bidVol4\":22,\"bidVol5\":28}"
+}, {
+  "key" : "future_tick_LG",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"LG2601\",\"exchange\":\"DCE\",\"open\":788.0,\"high\":791.0,\"low\":785.5,\"preClose\":787.0,\"lastPrice\":786.0,\"last\":null,\"underlyingSymbol\":\"LG\",\"volume\":7691,\"tickTime\":\"1761807768597\",\"openInterest\":16535.0,\"priceChangeRatio\":-0.001271,\"priceDifference\":-1.0,\"preSettlement\":788.0,\"ask1\":786.5,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":2,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":786.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":27,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_JM",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"JM2601\",\"exchange\":\"DCE\",\"open\":1283.0,\"high\":1297.5,\"low\":1281.5,\"preClose\":1288.0,\"lastPrice\":1295.5,\"last\":null,\"underlyingSymbol\":\"JM\",\"volume\":90315,\"tickTime\":\"1761829968133\",\"openInterest\":694208.0,\"priceChangeRatio\":0.005823,\"priceDifference\":7.5,\"preSettlement\":1298.0,\"ask1\":1296.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":511,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":1295.5,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":92,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_IH",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"IH2511\",\"exchange\":\"CFFEX\",\"open\":3060.4,\"high\":3076.0,\"low\":3041.8,\"preClose\":3065.6,\"lastPrice\":3046.6,\"last\":null,\"underlyingSymbol\":\"IH\",\"volume\":14214,\"tickTime\":\"1761807600395\",\"openInterest\":16393.0,\"priceChangeRatio\":-0.006198,\"priceDifference\":-19.0,\"preSettlement\":3062.8,\"ask1\":3046.8,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":3046.6,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_P",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"P2601\",\"exchange\":\"DCE\",\"open\":8850.0,\"high\":8858.0,\"low\":8820.0,\"preClose\":8828.0,\"lastPrice\":8832.0,\"last\":null,\"underlyingSymbol\":\"P\",\"volume\":38470,\"tickTime\":\"1761829968134\",\"openInterest\":395526.0,\"priceChangeRatio\":0.000453,\"priceDifference\":4.0,\"preSettlement\":8820.0,\"ask1\":8832.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":278,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":8830.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":128,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_VF",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"V2602F\",\"exchange\":\"UNKNOWN\",\"open\":4805.0,\"high\":4805.0,\"low\":4791.0,\"preClose\":4805.0,\"lastPrice\":4793.0,\"last\":null,\"underlyingSymbol\":\"VF\",\"volume\":94,\"tickTime\":\"1761829967674\",\"openInterest\":1509.0,\"priceChangeRatio\":-0.002497,\"priceDifference\":-12.0,\"preSettlement\":4829.0,\"ask1\":4793.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":3,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":4792.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":25,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_IC",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"IC2511\",\"exchange\":\"CFFEX\",\"open\":7424.8,\"high\":7425.0,\"low\":7317.0,\"preClose\":7440.6,\"lastPrice\":7351.2,\"last\":null,\"underlyingSymbol\":\"IC\",\"volume\":30611,\"tickTime\":\"1761807600395\",\"openInterest\":49423.0,\"priceChangeRatio\":-0.012015,\"priceDifference\":-89.4,\"preSettlement\":7427.6,\"ask1\":7351.6,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":7351.2,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_CJ",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"CJ2601\",\"exchange\":\"CZCE\",\"open\":10500.0,\"high\":10525.0,\"low\":10175.0,\"preClose\":10495.0,\"lastPrice\":10225.0,\"last\":null,\"underlyingSymbol\":\"CJ\",\"volume\":324621,\"tickTime\":\"1761807605856\",\"openInterest\":188572.0,\"priceChangeRatio\":-0.025727,\"priceDifference\":-270.0,\"preSettlement\":10485.0,\"ask1\":10230.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":66,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":10225.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":100,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PG",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PG2512\",\"exchange\":\"DCE\",\"open\":4289.0,\"high\":4319.0,\"low\":4286.0,\"preClose\":4286.0,\"lastPrice\":4314.0,\"last\":null,\"underlyingSymbol\":\"PG\",\"volume\":10605,\"tickTime\":\"1761829967651\",\"openInterest\":105631.0,\"priceChangeRatio\":0.006533,\"priceDifference\":28.0,\"preSettlement\":4291.0,\"ask1\":4315.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":21,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":4314.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":33,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_CU",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"CU2512\",\"exchange\":\"SHFE\",\"open\":87380.0,\"high\":87560.0,\"low\":86930.0,\"preClose\":87960.0,\"lastPrice\":87510.0,\"last\":null,\"underlyingSymbol\":\"CU\",\"volume\":31445,\"tickTime\":\"1761829968133\",\"openInterest\":278229.0,\"priceChangeRatio\":-0.005116,\"priceDifference\":-450.0,\"preSettlement\":88490.0,\"ask1\":87510.0,\"ask2\":87520.0,\"ask3\":87530.0,\"ask4\":87540.0,\"ask5\":87550.0,\"askVol1\":5,\"askVol2\":23,\"askVol3\":14,\"askVol4\":24,\"askVol5\":33,\"bid1\":87500.0,\"bid2\":87490.0,\"bid3\":87480.0,\"bid4\":87470.0,\"bid5\":87460.0,\"bidVol1\":10,\"bidVol2\":37,\"bidVol3\":49,\"bidVol4\":35,\"bidVol5\":33}"
+}, {
+  "key" : "future_tick_UR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"UR2601\",\"exchange\":\"CZCE\",\"open\":1648.0,\"high\":1648.0,\"low\":1618.0,\"preClose\":1644.0,\"lastPrice\":1627.0,\"last\":null,\"underlyingSymbol\":\"UR\",\"volume\":150829,\"tickTime\":\"1761807605866\",\"openInterest\":270109.0,\"priceChangeRatio\":-0.010341,\"priceDifference\":-17.0,\"preSettlement\":1643.0,\"ask1\":1628.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":256,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":1627.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":154,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_JD",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"JD2512\",\"exchange\":\"DCE\",\"open\":3153.0,\"high\":3175.0,\"low\":3140.0,\"preClose\":3165.0,\"lastPrice\":3157.0,\"last\":null,\"underlyingSymbol\":\"JD\",\"volume\":315481,\"tickTime\":\"1761807802459\",\"openInterest\":201570.0,\"priceChangeRatio\":-0.002528,\"priceDifference\":-8.0,\"preSettlement\":3153.0,\"ask1\":3158.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":3,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":3157.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":426,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PK",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PK2601\",\"exchange\":\"CZCE\",\"open\":7822.0,\"high\":7838.0,\"low\":7778.0,\"preClose\":7822.0,\"lastPrice\":7800.0,\"last\":null,\"underlyingSymbol\":\"PK\",\"volume\":71128,\"tickTime\":\"1761807605856\",\"openInterest\":170724.0,\"priceChangeRatio\":-0.002813,\"priceDifference\":-22.0,\"preSettlement\":7828.0,\"ask1\":7802.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":3,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":7800.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":52,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_CY",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"CY2601\",\"exchange\":\"CZCE\",\"open\":19860.0,\"high\":19935.0,\"low\":19845.0,\"preClose\":19895.0,\"lastPrice\":19925.0,\"last\":null,\"underlyingSymbol\":\"CY\",\"volume\":630,\"tickTime\":\"1761829791169\",\"openInterest\":23781.0,\"priceChangeRatio\":0.001508,\"priceDifference\":30.0,\"preSettlement\":19910.0,\"ask1\":19925.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":27,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":19920.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":20,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PB",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PB2512\",\"exchange\":\"SHFE\",\"open\":17355.0,\"high\":17475.0,\"low\":17350.0,\"preClose\":17350.0,\"lastPrice\":17435.0,\"last\":null,\"underlyingSymbol\":\"PB\",\"volume\":10999,\"tickTime\":\"1761829968133\",\"openInterest\":69821.0,\"priceChangeRatio\":0.004899,\"priceDifference\":85.0,\"preSettlement\":17360.0,\"ask1\":17435.0,\"ask2\":17440.0,\"ask3\":17445.0,\"ask4\":17450.0,\"ask5\":17455.0,\"askVol1\":23,\"askVol2\":108,\"askVol3\":63,\"askVol4\":62,\"askVol5\":51,\"bid1\":17430.0,\"bid2\":17425.0,\"bid3\":17420.0,\"bid4\":17415.0,\"bid5\":17410.0,\"bidVol1\":100,\"bidVol2\":76,\"bidVol3\":41,\"bidVol4\":49,\"bidVol5\":62}"
+}, {
+  "key" : "future_tick_RS",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"RS2511\",\"exchange\":\"CZCE\",\"open\":5270.0,\"high\":5271.0,\"low\":5270.0,\"preClose\":5312.0,\"lastPrice\":5270.0,\"last\":null,\"underlyingSymbol\":\"RS\",\"volume\":5,\"tickTime\":\"1761807605866\",\"openInterest\":13.0,\"priceChangeRatio\":-0.007907,\"priceDifference\":-42.0,\"preSettlement\":5335.0,\"ask1\":5309.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":5200.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":2,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_CF",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"CF2601\",\"exchange\":\"CZCE\",\"open\":13605.0,\"high\":13645.0,\"low\":13600.0,\"preClose\":13600.0,\"lastPrice\":13645.0,\"last\":null,\"underlyingSymbol\":\"CF\",\"volume\":23522,\"tickTime\":\"1761829968169\",\"openInterest\":581322.0,\"priceChangeRatio\":0.003309,\"priceDifference\":45.0,\"preSettlement\":13630.0,\"ask1\":13645.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":304,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":13640.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":892,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_SH",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SH2601\",\"exchange\":\"CZCE\",\"open\":2316.0,\"high\":2333.0,\"low\":2315.0,\"preClose\":2317.0,\"lastPrice\":2324.0,\"last\":null,\"underlyingSymbol\":\"SH\",\"volume\":49255,\"tickTime\":\"1761829968176\",\"openInterest\":158919.0,\"priceChangeRatio\":0.003021,\"priceDifference\":7.0,\"preSettlement\":2341.0,\"ask1\":2324.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":129,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":2323.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":244,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_LU",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"LU2601\",\"exchange\":\"INE\",\"open\":3258.0,\"high\":3267.0,\"low\":3250.0,\"preClose\":3255.0,\"lastPrice\":3266.0,\"last\":null,\"underlyingSymbol\":\"LU\",\"volume\":16703,\"tickTime\":\"1761829968076\",\"openInterest\":84333.0,\"priceChangeRatio\":0.003379,\"priceDifference\":11.0,\"preSettlement\":3246.0,\"ask1\":3267.0,\"ask2\":3268.0,\"ask3\":3269.0,\"ask4\":3270.0,\"ask5\":3271.0,\"askVol1\":80,\"askVol2\":73,\"askVol3\":51,\"askVol4\":58,\"askVol5\":46,\"bid1\":3265.0,\"bid2\":3264.0,\"bid3\":3263.0,\"bid4\":3262.0,\"bid5\":3261.0,\"bidVol1\":76,\"bidVol2\":95,\"bidVol3\":86,\"bidVol4\":99,\"bidVol5\":76}"
+}, {
+  "key" : "future_tick_BB",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"BB2601\",\"exchange\":\"DCE\",\"open\":147.05,\"high\":147.05,\"low\":146.8,\"preClose\":146.85,\"lastPrice\":146.8,\"last\":null,\"underlyingSymbol\":\"BB\",\"volume\":2,\"tickTime\":\"1761807768266\",\"openInterest\":81.0,\"priceChangeRatio\":-0.000340,\"priceDifference\":-0.05,\"preSettlement\":146.8,\"ask1\":147.15,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":146.8,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_B",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"B2601\",\"exchange\":\"DCE\",\"open\":3727.0,\"high\":3733.0,\"low\":3704.0,\"preClose\":3704.0,\"lastPrice\":3715.0,\"last\":null,\"underlyingSymbol\":\"B\",\"volume\":24027,\"tickTime\":\"1761829968133\",\"openInterest\":124489.0,\"priceChangeRatio\":0.002970,\"priceDifference\":11.0,\"preSettlement\":3687.0,\"ask1\":3715.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":42,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":3714.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":225,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_EG",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"EG2601\",\"exchange\":\"DCE\",\"open\":4025.0,\"high\":4035.0,\"low\":4022.0,\"preClose\":4032.0,\"lastPrice\":4032.0,\"last\":null,\"underlyingSymbol\":\"EG\",\"volume\":24836,\"tickTime\":\"1761829967118\",\"openInterest\":319489.0,\"priceChangeRatio\":0.000000,\"priceDifference\":0.0,\"preSettlement\":4073.0,\"ask1\":4033.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":77,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":4032.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":84,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_OP",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"OP2601\",\"exchange\":\"UNKNOWN\",\"open\":4230.0,\"high\":4248.0,\"low\":4210.0,\"preClose\":4230.0,\"lastPrice\":4214.0,\"last\":null,\"underlyingSymbol\":\"OP\",\"volume\":200,\"tickTime\":\"1761807601845\",\"openInterest\":924.0,\"priceChangeRatio\":-0.003783,\"priceDifference\":-16.0,\"preSettlement\":4230.0,\"ask1\":4220.0,\"ask2\":4222.0,\"ask3\":4224.0,\"ask4\":4226.0,\"ask5\":4228.0,\"askVol1\":5,\"askVol2\":5,\"askVol3\":6,\"askVol4\":4,\"askVol5\":6,\"bid1\":4212.0,\"bid2\":4210.0,\"bid3\":4208.0,\"bid4\":4206.0,\"bid5\":4204.0,\"bidVol1\":3,\"bidVol2\":3,\"bidVol3\":4,\"bidVol4\":3,\"bidVol5\":3}"
+}, {
+  "key" : "future_tick_FG",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"FG2601\",\"exchange\":\"CZCE\",\"open\":1091.0,\"high\":1099.0,\"low\":1090.0,\"preClose\":1091.0,\"lastPrice\":1096.0,\"last\":null,\"underlyingSymbol\":\"FG\",\"volume\":209527,\"tickTime\":\"1761829968169\",\"openInterest\":1870149.0,\"priceChangeRatio\":0.004583,\"priceDifference\":5.0,\"preSettlement\":1104.0,\"ask1\":1097.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":2426,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":1096.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":3798,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_ZC",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"ZC2511\",\"exchange\":\"CZCE\",\"open\":0.0,\"high\":0.0,\"low\":0.0,\"preClose\":801.4,\"lastPrice\":801.4,\"last\":null,\"underlyingSymbol\":\"ZC\",\"volume\":0,\"tickTime\":\"1761807605866\",\"openInterest\":0.0,\"priceChangeRatio\":0.000000,\"priceDifference\":0.0,\"preSettlement\":801.4,\"ask1\":0.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":0,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":0.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":0,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PF",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PF2512\",\"exchange\":\"CZCE\",\"open\":6208.0,\"high\":6208.0,\"low\":6178.0,\"preClose\":6204.0,\"lastPrice\":6180.0,\"last\":null,\"underlyingSymbol\":\"PF\",\"volume\":16874,\"tickTime\":\"1761829968169\",\"openInterest\":143357.0,\"priceChangeRatio\":-0.003868,\"priceDifference\":-24.0,\"preSettlement\":6242.0,\"ask1\":6180.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":62,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":6178.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":297,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_FB",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"FB2512\",\"exchange\":\"DCE\",\"open\":1260.5,\"high\":1265.0,\"low\":1260.0,\"preClose\":1261.0,\"lastPrice\":1263.0,\"last\":null,\"underlyingSymbol\":\"FB\",\"volume\":622,\"tickTime\":\"1761807768466\",\"openInterest\":1495.0,\"priceChangeRatio\":0.001586,\"priceDifference\":2.0,\"preSettlement\":1265.5,\"ask1\":1263.5,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":1262.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":2,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_RU",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"RU2601\",\"exchange\":\"SHFE\",\"open\":15400.0,\"high\":15455.0,\"low\":15395.0,\"preClose\":15400.0,\"lastPrice\":15440.0,\"last\":null,\"underlyingSymbol\":\"RU\",\"volume\":20138,\"tickTime\":\"1761829968133\",\"openInterest\":144428.0,\"priceChangeRatio\":0.002597,\"priceDifference\":40.0,\"preSettlement\":15495.0,\"ask1\":15440.0,\"ask2\":15445.0,\"ask3\":15450.0,\"ask4\":15455.0,\"ask5\":15460.0,\"askVol1\":180,\"askVol2\":181,\"askVol3\":309,\"askVol4\":230,\"askVol5\":192,\"bid1\":15435.0,\"bid2\":15430.0,\"bid3\":15425.0,\"bid4\":15420.0,\"bid5\":15415.0,\"bidVol1\":137,\"bidVol2\":193,\"bidVol3\":144,\"bidVol4\":157,\"bidVol5\":189}"
+}, {
+  "key" : "future_tick_TA",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"TA2601\",\"exchange\":\"CZCE\",\"open\":4578.0,\"high\":4578.0,\"low\":4556.0,\"preClose\":4570.0,\"lastPrice\":4562.0,\"last\":null,\"underlyingSymbol\":\"TA\",\"volume\":71707,\"tickTime\":\"1761829968268\",\"openInterest\":1058462.0,\"priceChangeRatio\":-0.001751,\"priceDifference\":-8.0,\"preSettlement\":4608.0,\"ask1\":4562.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":845,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":4560.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":917,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_LH",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"LH2601\",\"exchange\":\"DCE\",\"open\":12145.0,\"high\":12185.0,\"low\":11855.0,\"preClose\":12185.0,\"lastPrice\":11880.0,\"last\":null,\"underlyingSymbol\":\"LH\",\"volume\":112404,\"tickTime\":\"1761807802554\",\"openInterest\":135813.0,\"priceChangeRatio\":-0.025031,\"priceDifference\":-305.0,\"preSettlement\":12160.0,\"ask1\":11885.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":11880.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":59,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_OI",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"OI2601\",\"exchange\":\"CZCE\",\"open\":9535.0,\"high\":9548.0,\"low\":9497.0,\"preClose\":9529.0,\"lastPrice\":9512.0,\"last\":null,\"underlyingSymbol\":\"OI\",\"volume\":17968,\"tickTime\":\"1761829968169\",\"openInterest\":228474.0,\"priceChangeRatio\":-0.001784,\"priceDifference\":-17.0,\"preSettlement\":9514.0,\"ask1\":9512.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":35,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":9511.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":44,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_AG",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"AG2512\",\"exchange\":\"SHFE\",\"open\":11245.0,\"high\":11330.0,\"low\":11235.0,\"preClose\":11253.0,\"lastPrice\":11329.0,\"last\":null,\"underlyingSymbol\":\"AG\",\"volume\":55808,\"tickTime\":\"1761829968076\",\"openInterest\":287151.0,\"priceChangeRatio\":0.006754,\"priceDifference\":76.0,\"preSettlement\":11282.0,\"ask1\":11329.0,\"ask2\":11330.0,\"ask3\":11331.0,\"ask4\":11332.0,\"ask5\":11333.0,\"askVol1\":2,\"askVol2\":112,\"askVol3\":15,\"askVol4\":23,\"askVol5\":82,\"bid1\":11328.0,\"bid2\":11327.0,\"bid3\":11326.0,\"bid4\":11325.0,\"bid5\":11324.0,\"bidVol1\":22,\"bidVol2\":43,\"bidVol3\":36,\"bidVol4\":14,\"bidVol5\":24}"
+}, {
+  "key" : "future_tick_SS",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SS2512\",\"exchange\":\"SHFE\",\"open\":12710.0,\"high\":12725.0,\"low\":12680.0,\"preClose\":12725.0,\"lastPrice\":12695.0,\"last\":null,\"underlyingSymbol\":\"SS\",\"volume\":12320,\"tickTime\":\"1761829968133\",\"openInterest\":88370.0,\"priceChangeRatio\":-0.002358,\"priceDifference\":-30.0,\"preSettlement\":12760.0,\"ask1\":12700.0,\"ask2\":12705.0,\"ask3\":12710.0,\"ask4\":12715.0,\"ask5\":12720.0,\"askVol1\":385,\"askVol2\":369,\"askVol3\":255,\"askVol4\":245,\"askVol5\":224,\"bid1\":12695.0,\"bid2\":12690.0,\"bid3\":12685.0,\"bid4\":12680.0,\"bid5\":12675.0,\"bidVol1\":11,\"bidVol2\":502,\"bidVol3\":375,\"bidVol4\":540,\"bidVol5\":248}"
+}, {
+  "key" : "future_tick_AO",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"AO2601\",\"exchange\":\"SHFE\",\"open\":2810.0,\"high\":2826.0,\"low\":2808.0,\"preClose\":2816.0,\"lastPrice\":2824.0,\"last\":null,\"underlyingSymbol\":\"AO\",\"volume\":26571,\"tickTime\":\"1761829968093\",\"openInterest\":396272.0,\"priceChangeRatio\":0.002841,\"priceDifference\":8.0,\"preSettlement\":2849.0,\"ask1\":2825.0,\"ask2\":2826.0,\"ask3\":2827.0,\"ask4\":2828.0,\"ask5\":2829.0,\"askVol1\":289,\"askVol2\":596,\"askVol3\":228,\"askVol4\":267,\"askVol5\":220,\"bid1\":2824.0,\"bid2\":2823.0,\"bid3\":2822.0,\"bid4\":2821.0,\"bid5\":2820.0,\"bidVol1\":78,\"bidVol2\":380,\"bidVol3\":290,\"bidVol4\":195,\"bidVol5\":278}"
+}, {
+  "key" : "future_tick_V",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"V2601\",\"exchange\":\"DCE\",\"open\":4762.0,\"high\":4768.0,\"low\":4750.0,\"preClose\":4766.0,\"lastPrice\":4753.0,\"last\":null,\"underlyingSymbol\":\"V\",\"volume\":82906,\"tickTime\":\"1761829968166\",\"openInterest\":1169814.0,\"priceChangeRatio\":-0.002728,\"priceDifference\":-13.0,\"preSettlement\":4787.0,\"ask1\":4753.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":601,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":4752.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":246,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_IM",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"IM2511\",\"exchange\":\"CFFEX\",\"open\":7500.6,\"high\":7514.4,\"low\":7402.2,\"preClose\":7519.6,\"lastPrice\":7438.4,\"last\":null,\"underlyingSymbol\":\"IM\",\"volume\":47601,\"tickTime\":\"1761807600395\",\"openInterest\":71105.0,\"priceChangeRatio\":-0.010798,\"priceDifference\":-81.2,\"preSettlement\":7504.8,\"ask1\":7438.8,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":7438.4,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_MA",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"MA2601\",\"exchange\":\"CZCE\",\"open\":2202.0,\"high\":2213.0,\"low\":2202.0,\"preClose\":2208.0,\"lastPrice\":2209.0,\"last\":null,\"underlyingSymbol\":\"MA\",\"volume\":90988,\"tickTime\":\"1761829968169\",\"openInterest\":1328446.0,\"priceChangeRatio\":0.000453,\"priceDifference\":1.0,\"preSettlement\":2233.0,\"ask1\":2210.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1444,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":2209.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1499,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_WH",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"WH2511\",\"exchange\":\"CZCE\",\"open\":0.0,\"high\":0.0,\"low\":0.0,\"preClose\":3198.0,\"lastPrice\":3198.0,\"last\":null,\"underlyingSymbol\":\"WH\",\"volume\":0,\"tickTime\":\"1761807605866\",\"openInterest\":0.0,\"priceChangeRatio\":0.000000,\"priceDifference\":0.0,\"preSettlement\":3198.0,\"ask1\":0.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":0,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":0.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":0,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_SF",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SF2601\",\"exchange\":\"CZCE\",\"open\":5588.0,\"high\":5626.0,\"low\":5536.0,\"preClose\":5594.0,\"lastPrice\":5550.0,\"last\":null,\"underlyingSymbol\":\"SF\",\"volume\":151336,\"tickTime\":\"1761807605866\",\"openInterest\":166241.0,\"priceChangeRatio\":-0.007866,\"priceDifference\":-44.0,\"preSettlement\":5576.0,\"ask1\":5552.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":28,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":5550.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":197,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PL",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PL2601\",\"exchange\":\"CZCE\",\"open\":6077.0,\"high\":6092.0,\"low\":6068.0,\"preClose\":6078.0,\"lastPrice\":6083.0,\"last\":null,\"underlyingSymbol\":\"PL\",\"volume\":195,\"tickTime\":\"1761829964156\",\"openInterest\":9077.0,\"priceChangeRatio\":0.000823,\"priceDifference\":5.0,\"preSettlement\":6111.0,\"ask1\":6083.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":5,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":6080.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":12,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_NI",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"NI2512\",\"exchange\":\"SHFE\",\"open\":120750.0,\"high\":120850.0,\"low\":120500.0,\"preClose\":120980.0,\"lastPrice\":120650.0,\"last\":null,\"underlyingSymbol\":\"NI\",\"volume\":12401,\"tickTime\":\"1761829968133\",\"openInterest\":108980.0,\"priceChangeRatio\":-0.002728,\"priceDifference\":-330.0,\"preSettlement\":121240.0,\"ask1\":120650.0,\"ask2\":120660.0,\"ask3\":120670.0,\"ask4\":120680.0,\"ask5\":120690.0,\"askVol1\":22,\"askVol2\":18,\"askVol3\":20,\"askVol4\":46,\"askVol5\":31,\"bid1\":120640.0,\"bid2\":120630.0,\"bid3\":120620.0,\"bid4\":120610.0,\"bid5\":120600.0,\"bidVol1\":16,\"bidVol2\":22,\"bidVol3\":43,\"bidVol4\":35,\"bidVol5\":226}"
+}, {
+  "key" : "future_tick_PS",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PS2601\",\"exchange\":\"GFEX\",\"open\":54900.0,\"high\":55455.0,\"low\":54435.0,\"preClose\":54990.0,\"lastPrice\":54950.0,\"last\":null,\"underlyingSymbol\":\"PS\",\"volume\":223914,\"tickTime\":\"1761807655570\",\"openInterest\":126052.0,\"priceChangeRatio\":-0.000727,\"priceDifference\":-40.0,\"preSettlement\":55030.0,\"ask1\":54955.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":4,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":54950.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":34,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_EB",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"EB2512\",\"exchange\":\"DCE\",\"open\":6430.0,\"high\":6464.0,\"low\":6416.0,\"preClose\":6421.0,\"lastPrice\":6461.0,\"last\":null,\"underlyingSymbol\":\"EB\",\"volume\":38306,\"tickTime\":\"1761829968133\",\"openInterest\":425635.0,\"priceChangeRatio\":0.006230,\"priceDifference\":40.0,\"preSettlement\":6492.0,\"ask1\":6461.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":115,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":6460.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":215,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_AP",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"AP2601\",\"exchange\":\"CZCE\",\"open\":9218.0,\"high\":9298.0,\"low\":9141.0,\"preClose\":9198.0,\"lastPrice\":9268.0,\"last\":null,\"underlyingSymbol\":\"AP\",\"volume\":141013,\"tickTime\":\"1761807605856\",\"openInterest\":146104.0,\"priceChangeRatio\":0.007610,\"priceDifference\":70.0,\"preSettlement\":9177.0,\"ask1\":9269.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":13,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":9264.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":3,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_J",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"J2601\",\"exchange\":\"DCE\",\"open\":1786.5,\"high\":1797.0,\"low\":1784.0,\"preClose\":1786.5,\"lastPrice\":1795.5,\"last\":null,\"underlyingSymbol\":\"J\",\"volume\":2747,\"tickTime\":\"1761829968133\",\"openInterest\":39574.0,\"priceChangeRatio\":0.005038,\"priceDifference\":9.0,\"preSettlement\":1797.0,\"ask1\":1795.5,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":11,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":1795.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":15,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_AL",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"AL2512\",\"exchange\":\"SHFE\",\"open\":21200.0,\"high\":21215.0,\"low\":21155.0,\"preClose\":21245.0,\"lastPrice\":21205.0,\"last\":null,\"underlyingSymbol\":\"AL\",\"volume\":21286,\"tickTime\":\"1761829968093\",\"openInterest\":275201.0,\"priceChangeRatio\":-0.001883,\"priceDifference\":-40.0,\"preSettlement\":21265.0,\"ask1\":21210.0,\"ask2\":21215.0,\"ask3\":21220.0,\"ask4\":21225.0,\"ask5\":21230.0,\"askVol1\":171,\"askVol2\":212,\"askVol3\":158,\"askVol4\":120,\"askVol5\":88,\"bid1\":21205.0,\"bid2\":21200.0,\"bid3\":21195.0,\"bid4\":21190.0,\"bid5\":21185.0,\"bidVol1\":217,\"bidVol2\":517,\"bidVol3\":291,\"bidVol4\":234,\"bidVol5\":284}"
+}, {
+  "key" : "future_tick_SI",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SI2601\",\"exchange\":\"GFEX\",\"open\":9145.0,\"high\":9295.0,\"low\":9120.0,\"preClose\":9170.0,\"lastPrice\":9155.0,\"last\":null,\"underlyingSymbol\":\"SI\",\"volume\":320991,\"tickTime\":\"1761807655570\",\"openInterest\":227764.0,\"priceChangeRatio\":-0.001636,\"priceDifference\":-15.0,\"preSettlement\":9070.0,\"ask1\":9160.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":20,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":9155.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":118,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_BU",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"BU2601\",\"exchange\":\"SHFE\",\"open\":3255.0,\"high\":3266.0,\"low\":3252.0,\"preClose\":3254.0,\"lastPrice\":3255.0,\"last\":null,\"underlyingSymbol\":\"BU\",\"volume\":16486,\"tickTime\":\"1761829968133\",\"openInterest\":199434.0,\"priceChangeRatio\":0.000307,\"priceDifference\":1.0,\"preSettlement\":3263.0,\"ask1\":3256.0,\"ask2\":3257.0,\"ask3\":3258.0,\"ask4\":3259.0,\"ask5\":3260.0,\"askVol1\":218,\"askVol2\":494,\"askVol3\":245,\"askVol4\":168,\"askVol5\":406,\"bid1\":3255.0,\"bid2\":3254.0,\"bid3\":3253.0,\"bid4\":3252.0,\"bid5\":3251.0,\"bidVol1\":122,\"bidVol2\":554,\"bidVol3\":282,\"bidVol4\":212,\"bidVol5\":137}"
+}, {
+  "key" : "future_tick_WR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"WR2601\",\"exchange\":\"WR\",\"open\":3366.0,\"high\":3389.0,\"low\":3349.0,\"preClose\":3355.0,\"lastPrice\":3367.0,\"last\":null,\"underlyingSymbol\":\"WR\",\"volume\":21,\"tickTime\":\"1761807601940\",\"openInterest\":77.0,\"priceChangeRatio\":0.003577,\"priceDifference\":12.0,\"preSettlement\":3353.0,\"ask1\":3368.0,\"ask2\":3369.0,\"ask3\":3380.0,\"ask4\":3390.0,\"ask5\":3394.0,\"askVol1\":1,\"askVol2\":1,\"askVol3\":1,\"askVol4\":1,\"askVol5\":1,\"bid1\":3335.0,\"bid2\":3330.0,\"bid3\":3327.0,\"bid4\":3326.0,\"bid5\":3320.0,\"bidVol1\":1,\"bidVol2\":1,\"bidVol3\":2,\"bidVol4\":1,\"bidVol5\":1}"
+}, {
+  "key" : "future_tick_IF",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"IF2511\",\"exchange\":\"CFFEX\",\"open\":4737.0,\"high\":4752.6,\"low\":4694.8,\"preClose\":4743.4,\"lastPrice\":4701.4,\"last\":null,\"underlyingSymbol\":\"IF\",\"volume\":32187,\"tickTime\":\"1761807600395\",\"openInterest\":44533.0,\"priceChangeRatio\":-0.008854,\"priceDifference\":-42.0,\"preSettlement\":4734.6,\"ask1\":4701.6,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":4701.2,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PM",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PM2511\",\"exchange\":\"CZCE\",\"open\":0.0,\"high\":0.0,\"low\":0.0,\"preClose\":3122.0,\"lastPrice\":3122.0,\"last\":null,\"underlyingSymbol\":\"PM\",\"volume\":0,\"tickTime\":\"1761807605856\",\"openInterest\":0.0,\"priceChangeRatio\":0.000000,\"priceDifference\":0.0,\"preSettlement\":3122.0,\"ask1\":0.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":0,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":0.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":0,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_TS",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"TS2512\",\"exchange\":\"CFFEX\",\"open\":102.566,\"high\":102.586,\"low\":102.548,\"preClose\":102.576,\"lastPrice\":102.554,\"last\":null,\"underlyingSymbol\":\"TS\",\"volume\":33991,\"tickTime\":\"1761808500354\",\"openInterest\":73541.0,\"priceChangeRatio\":-0.000214,\"priceDifference\":-0.022,\"preSettlement\":102.564,\"ask1\":102.556,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":28,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":102.554,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":33,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PR2601\",\"exchange\":\"CZCE\",\"open\":5678.0,\"high\":5678.0,\"low\":5650.0,\"preClose\":5666.0,\"lastPrice\":5652.0,\"last\":null,\"underlyingSymbol\":\"PR\",\"volume\":2866,\"tickTime\":\"1761829966696\",\"openInterest\":37506.0,\"priceChangeRatio\":-0.002471,\"priceDifference\":-14.0,\"preSettlement\":5708.0,\"ask1\":5654.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":72,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":5652.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":63,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_ZN",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"ZN2512\",\"exchange\":\"SHFE\",\"open\":22280.0,\"high\":22355.0,\"low\":22235.0,\"preClose\":22365.0,\"lastPrice\":22335.0,\"last\":null,\"underlyingSymbol\":\"ZN\",\"volume\":13950,\"tickTime\":\"1761829968133\",\"openInterest\":119931.0,\"priceChangeRatio\":-0.001341,\"priceDifference\":-30.0,\"preSettlement\":22420.0,\"ask1\":22335.0,\"ask2\":22340.0,\"ask3\":22345.0,\"ask4\":22350.0,\"ask5\":22355.0,\"askVol1\":99,\"askVol2\":120,\"askVol3\":145,\"askVol4\":188,\"askVol5\":139,\"bid1\":22330.0,\"bid2\":22325.0,\"bid3\":22320.0,\"bid4\":22315.0,\"bid5\":22310.0,\"bidVol1\":163,\"bidVol2\":117,\"bidVol3\":151,\"bidVol4\":87,\"bidVol5\":166}"
+}, {
+  "key" : "future_tick_T",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"T2512\",\"exchange\":\"CFFEX\",\"open\":108.58,\"high\":108.68,\"low\":108.545,\"preClose\":108.57,\"lastPrice\":108.63,\"last\":null,\"underlyingSymbol\":\"T\",\"volume\":68993,\"tickTime\":\"1761808500354\",\"openInterest\":245110.0,\"priceChangeRatio\":0.000553,\"priceDifference\":0.06,\"preSettlement\":108.58,\"ask1\":108.64,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":70,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":108.63,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":2,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PPF",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PP2602F\",\"exchange\":\"UNKNOWN\",\"open\":6654.0,\"high\":6665.0,\"low\":6654.0,\"preClose\":6651.0,\"lastPrice\":6657.0,\"last\":null,\"underlyingSymbol\":\"PPF\",\"volume\":10,\"tickTime\":\"1761829789684\",\"openInterest\":398.0,\"priceChangeRatio\":0.000902,\"priceDifference\":6.0,\"preSettlement\":6671.0,\"ask1\":6660.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":3,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":6659.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":2,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_LC",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"LC2601\",\"exchange\":\"GFEX\",\"open\":83120.0,\"high\":84940.0,\"low\":82220.0,\"preClose\":82900.0,\"lastPrice\":83400.0,\"last\":null,\"underlyingSymbol\":\"LC\",\"volume\":829117,\"tickTime\":\"1761807797611\",\"openInterest\":532871.0,\"priceChangeRatio\":0.006031,\"priceDifference\":500.0,\"preSettlement\":82420.0,\"ask1\":83420.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":124,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":83400.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":325,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_SN",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SN2512\",\"exchange\":\"SHFE\",\"open\":283300.0,\"high\":283730.0,\"low\":282630.0,\"preClose\":283600.0,\"lastPrice\":282980.0,\"last\":null,\"underlyingSymbol\":\"SN\",\"volume\":8775,\"tickTime\":\"1761829968133\",\"openInterest\":38552.0,\"priceChangeRatio\":-0.002186,\"priceDifference\":-620.0,\"preSettlement\":284690.0,\"ask1\":283000.0,\"ask2\":283010.0,\"ask3\":283020.0,\"ask4\":283030.0,\"ask5\":283040.0,\"askVol1\":1,\"askVol2\":2,\"askVol3\":7,\"askVol4\":2,\"askVol5\":2,\"bid1\":282960.0,\"bid2\":282950.0,\"bid3\":282940.0,\"bid4\":282930.0,\"bid5\":282920.0,\"bidVol1\":5,\"bidVol2\":2,\"bidVol3\":11,\"bidVol4\":38,\"bidVol5\":5}"
+}, {
+  "key" : "future_tick_AU",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"AU2512\",\"exchange\":\"SHFE\",\"open\":910.0,\"high\":912.94,\"low\":908.8,\"preClose\":912.16,\"lastPrice\":912.78,\"last\":null,\"underlyingSymbol\":\"AU\",\"volume\":24281,\"tickTime\":\"1761829968093\",\"openInterest\":158922.0,\"priceChangeRatio\":0.000680,\"priceDifference\":0.62,\"preSettlement\":910.32,\"ask1\":912.8,\"ask2\":912.82,\"ask3\":912.86,\"ask4\":912.88,\"ask5\":912.9,\"askVol1\":9,\"askVol2\":7,\"askVol3\":6,\"askVol4\":7,\"askVol5\":8,\"bid1\":912.78,\"bid2\":912.74,\"bid3\":912.72,\"bid4\":912.7,\"bid5\":912.68,\"bidVol1\":1,\"bidVol2\":1,\"bidVol3\":3,\"bidVol4\":3,\"bidVol5\":1}"
+}, {
+  "key" : "future_tick_NR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"NR2601\",\"exchange\":\"INE\",\"open\":12550.0,\"high\":12570.0,\"low\":12510.0,\"preClose\":12545.0,\"lastPrice\":12550.0,\"last\":null,\"underlyingSymbol\":\"NR\",\"volume\":4799,\"tickTime\":\"1761829966644\",\"openInterest\":56234.0,\"priceChangeRatio\":0.000399,\"priceDifference\":5.0,\"preSettlement\":12610.0,\"ask1\":12555.0,\"ask2\":12560.0,\"ask3\":12565.0,\"ask4\":12570.0,\"ask5\":12575.0,\"askVol1\":46,\"askVol2\":18,\"askVol3\":23,\"askVol4\":33,\"askVol5\":63,\"bid1\":12550.0,\"bid2\":12545.0,\"bid3\":12540.0,\"bid4\":12535.0,\"bid5\":12530.0,\"bidVol1\":27,\"bidVol2\":47,\"bidVol3\":91,\"bidVol4\":17,\"bidVol5\":38}"
+}, {
+  "key" : "future_tick_A",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"A2601\",\"exchange\":\"DCE\",\"open\":4100.0,\"high\":4112.0,\"low\":4081.0,\"preClose\":4103.0,\"lastPrice\":4094.0,\"last\":null,\"underlyingSymbol\":\"A\",\"volume\":28785,\"tickTime\":\"1761829968133\",\"openInterest\":265279.0,\"priceChangeRatio\":-0.002194,\"priceDifference\":-9.0,\"preSettlement\":4104.0,\"ask1\":4095.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":200,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":4094.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":75,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_LF",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"L2602F\",\"exchange\":\"UNKNOWN\",\"open\":6974.0,\"high\":6974.0,\"low\":6973.0,\"preClose\":6968.0,\"lastPrice\":6973.0,\"last\":null,\"underlyingSymbol\":\"LF\",\"volume\":3,\"tickTime\":\"1761829967118\",\"openInterest\":641.0,\"priceChangeRatio\":0.000718,\"priceDifference\":5.0,\"preSettlement\":6995.0,\"ask1\":6974.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":51,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":6973.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_M",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"M2601\",\"exchange\":\"DCE\",\"open\":3005.0,\"high\":3014.0,\"low\":2994.0,\"preClose\":2994.0,\"lastPrice\":3003.0,\"last\":null,\"underlyingSymbol\":\"M\",\"volume\":218829,\"tickTime\":\"1761829968133\",\"openInterest\":1635738.0,\"priceChangeRatio\":0.003006,\"priceDifference\":9.0,\"preSettlement\":2981.0,\"ask1\":3003.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":384,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":3002.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1033,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_SA",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SA2601\",\"exchange\":\"CZCE\",\"open\":1235.0,\"high\":1238.0,\"low\":1232.0,\"preClose\":1235.0,\"lastPrice\":1237.0,\"last\":null,\"underlyingSymbol\":\"SA\",\"volume\":73501,\"tickTime\":\"1761829968169\",\"openInterest\":1342274.0,\"priceChangeRatio\":0.001619,\"priceDifference\":2.0,\"preSettlement\":1242.0,\"ask1\":1237.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1727,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":1236.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":1672,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_EC",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"EC2512\",\"exchange\":\"INE\",\"open\":1871.0,\"high\":1880.0,\"low\":1830.0,\"preClose\":1871.0,\"lastPrice\":1843.8,\"last\":null,\"underlyingSymbol\":\"EC\",\"volume\":17598,\"tickTime\":\"1761807601451\",\"openInterest\":30114.0,\"priceChangeRatio\":-0.014538,\"priceDifference\":-27.2,\"preSettlement\":1841.1,\"ask1\":1844.0,\"ask2\":1844.9,\"ask3\":1845.0,\"ask4\":1845.4,\"ask5\":1845.6,\"askVol1\":4,\"askVol2\":1,\"askVol3\":4,\"askVol4\":1,\"askVol5\":1,\"bid1\":1843.8,\"bid2\":1843.0,\"bid3\":1842.1,\"bid4\":1842.0,\"bid5\":1841.1,\"bidVol1\":7,\"bidVol2\":3,\"bidVol3\":2,\"bidVol4\":1,\"bidVol5\":1}"
+}, {
+  "key" : "future_tick_CS",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"CS2601\",\"exchange\":\"DCE\",\"open\":2420.0,\"high\":2426.0,\"low\":2420.0,\"preClose\":2419.0,\"lastPrice\":2426.0,\"last\":null,\"underlyingSymbol\":\"CS\",\"volume\":8995,\"tickTime\":\"1761829967112\",\"openInterest\":205015.0,\"priceChangeRatio\":0.002894,\"priceDifference\":7.0,\"preSettlement\":2427.0,\"ask1\":2426.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":433,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":2425.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":234,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_TL",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"TL2512\",\"exchange\":\"CFFEX\",\"open\":115.83,\"high\":116.34,\"low\":115.64,\"preClose\":115.83,\"lastPrice\":116.15,\"last\":null,\"underlyingSymbol\":\"TL\",\"volume\":128226,\"tickTime\":\"1761808500354\",\"openInterest\":144078.0,\"priceChangeRatio\":0.002763,\"priceDifference\":0.32,\"preSettlement\":115.93,\"ask1\":116.17,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":7,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":116.16,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":2,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_SP",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SP2601\",\"exchange\":\"SHFE\",\"open\":5232.0,\"high\":5260.0,\"low\":5222.0,\"preClose\":5224.0,\"lastPrice\":5260.0,\"last\":null,\"underlyingSymbol\":\"SP\",\"volume\":35937,\"tickTime\":\"1761829968133\",\"openInterest\":155714.0,\"priceChangeRatio\":0.006891,\"priceDifference\":36.0,\"preSettlement\":5240.0,\"ask1\":5260.0,\"ask2\":5262.0,\"ask3\":5264.0,\"ask4\":5266.0,\"ask5\":5268.0,\"askVol1\":1054,\"askVol2\":319,\"askVol3\":256,\"askVol4\":283,\"askVol5\":288,\"bid1\":5258.0,\"bid2\":5256.0,\"bid3\":5254.0,\"bid4\":5252.0,\"bid5\":5250.0,\"bidVol1\":316,\"bidVol2\":321,\"bidVol3\":343,\"bidVol4\":230,\"bidVol5\":379}"
+}, {
+  "key" : "future_tick_RB",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"RB2601\",\"exchange\":\"SHFE\",\"open\":3106.0,\"high\":3112.0,\"low\":3100.0,\"preClose\":3106.0,\"lastPrice\":3110.0,\"last\":null,\"underlyingSymbol\":\"RB\",\"volume\":94400,\"tickTime\":\"1761829968133\",\"openInterest\":1906665.0,\"priceChangeRatio\":0.001288,\"priceDifference\":4.0,\"preSettlement\":3121.0,\"ask1\":3110.0,\"ask2\":3111.0,\"ask3\":3112.0,\"ask4\":3113.0,\"ask5\":3114.0,\"askVol1\":1459,\"askVol2\":1875,\"askVol3\":1821,\"askVol4\":1807,\"askVol5\":1478,\"bid1\":3109.0,\"bid2\":3108.0,\"bid3\":3107.0,\"bid4\":3106.0,\"bid5\":3105.0,\"bidVol1\":1590,\"bidVol2\":8616,\"bidVol3\":1586,\"bidVol4\":1673,\"bidVol5\":1612}"
+}, {
+  "key" : "future_tick_RR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"RR2512\",\"exchange\":\"DCE\",\"open\":3576.0,\"high\":3576.0,\"low\":3574.0,\"preClose\":3573.0,\"lastPrice\":3575.0,\"last\":null,\"underlyingSymbol\":\"RR\",\"volume\":102,\"tickTime\":\"1761829787153\",\"openInterest\":11643.0,\"priceChangeRatio\":0.000560,\"priceDifference\":2.0,\"preSettlement\":3573.0,\"ask1\":3575.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":8,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":3574.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":50,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_RM",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"RM2601\",\"exchange\":\"CZCE\",\"open\":2410.0,\"high\":2415.0,\"low\":2402.0,\"preClose\":2401.0,\"lastPrice\":2410.0,\"last\":null,\"underlyingSymbol\":\"RM\",\"volume\":39621,\"tickTime\":\"1761829968169\",\"openInterest\":351857.0,\"priceChangeRatio\":0.003748,\"priceDifference\":9.0,\"preSettlement\":2392.0,\"ask1\":2410.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":74,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":2409.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":107,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_Y",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"Y2601\",\"exchange\":\"DCE\",\"open\":8166.0,\"high\":8190.0,\"low\":8160.0,\"preClose\":8168.0,\"lastPrice\":8178.0,\"last\":null,\"underlyingSymbol\":\"Y\",\"volume\":29469,\"tickTime\":\"1761829968166\",\"openInterest\":490520.0,\"priceChangeRatio\":0.001224,\"priceDifference\":10.0,\"preSettlement\":8148.0,\"ask1\":8180.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":69,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":8178.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":231,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PP",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PP2601\",\"exchange\":\"DCE\",\"open\":6651.0,\"high\":6668.0,\"low\":6643.0,\"preClose\":6651.0,\"lastPrice\":6659.0,\"last\":null,\"underlyingSymbol\":\"PP\",\"volume\":29917,\"tickTime\":\"1761829968166\",\"openInterest\":613630.0,\"priceChangeRatio\":0.001203,\"priceDifference\":8.0,\"preSettlement\":6671.0,\"ask1\":6659.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":126,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":6658.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":50,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_PX",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"PX2601\",\"exchange\":\"CZCE\",\"open\":6592.0,\"high\":6592.0,\"low\":6570.0,\"preClose\":6588.0,\"lastPrice\":6576.0,\"last\":null,\"underlyingSymbol\":\"PX\",\"volume\":21638,\"tickTime\":\"1761829968169\",\"openInterest\":164884.0,\"priceChangeRatio\":-0.001821,\"priceDifference\":-12.0,\"preSettlement\":6632.0,\"ask1\":6576.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":128,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":6574.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":219,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_BR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"BR2512\",\"exchange\":\"SHFE\",\"open\":10755.0,\"high\":10775.0,\"low\":10730.0,\"preClose\":10800.0,\"lastPrice\":10765.0,\"last\":null,\"underlyingSymbol\":\"BR\",\"volume\":13391,\"tickTime\":\"1761829968094\",\"openInterest\":47008.0,\"priceChangeRatio\":-0.003241,\"priceDifference\":-35.0,\"preSettlement\":10770.0,\"ask1\":10770.0,\"ask2\":10775.0,\"ask3\":10780.0,\"ask4\":10785.0,\"ask5\":10790.0,\"askVol1\":99,\"askVol2\":160,\"askVol3\":182,\"askVol4\":181,\"askVol5\":293,\"bid1\":10765.0,\"bid2\":10760.0,\"bid3\":10755.0,\"bid4\":10750.0,\"bid5\":10745.0,\"bidVol1\":5,\"bidVol2\":142,\"bidVol3\":193,\"bidVol4\":144,\"bidVol5\":89}"
+}, {
+  "key" : "future_tick_TF",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"TF2512\",\"exchange\":\"CFFEX\",\"open\":106.07,\"high\":106.11,\"low\":106.03,\"preClose\":106.07,\"lastPrice\":106.065,\"last\":null,\"underlyingSymbol\":\"TF\",\"volume\":54366,\"tickTime\":\"1761808500354\",\"openInterest\":149269.0,\"priceChangeRatio\":-0.000047,\"priceDifference\":-0.005,\"preSettlement\":106.06,\"ask1\":106.065,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":1,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":106.06,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":103,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_SR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"SR2601\",\"exchange\":\"CZCE\",\"open\":5461.0,\"high\":5475.0,\"low\":5450.0,\"preClose\":5472.0,\"lastPrice\":5474.0,\"last\":null,\"underlyingSymbol\":\"SR\",\"volume\":29340,\"tickTime\":\"1761829968268\",\"openInterest\":381135.0,\"priceChangeRatio\":0.000365,\"priceDifference\":2.0,\"preSettlement\":5485.0,\"ask1\":5474.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":66,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":5473.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":260,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_I",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"I2601\",\"exchange\":\"DCE\",\"open\":800.0,\"high\":800.5,\"low\":797.5,\"preClose\":802.5,\"lastPrice\":798.5,\"last\":null,\"underlyingSymbol\":\"I\",\"volume\":28364,\"tickTime\":\"1761829968133\",\"openInterest\":551769.0,\"priceChangeRatio\":-0.004984,\"priceDifference\":-4.0,\"preSettlement\":804.5,\"ask1\":799.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":606,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":798.5,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":203,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_BZ",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"BZ2603\",\"exchange\":\"DCE\",\"open\":5445.0,\"high\":5474.0,\"low\":5430.0,\"preClose\":5445.0,\"lastPrice\":5472.0,\"last\":null,\"underlyingSymbol\":\"BZ\",\"volume\":902,\"tickTime\":\"1761829788628\",\"openInterest\":16160.0,\"priceChangeRatio\":0.004959,\"priceDifference\":27.0,\"preSettlement\":5516.0,\"ask1\":5472.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":20,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":5470.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":6,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_BC",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"BC2511\",\"exchange\":\"INE\",\"open\":77810.0,\"high\":77980.0,\"low\":77280.0,\"preClose\":78330.0,\"lastPrice\":77950.0,\"last\":null,\"underlyingSymbol\":\"BC\",\"volume\":496,\"tickTime\":\"1761829968076\",\"openInterest\":2720.0,\"priceChangeRatio\":-0.004851,\"priceDifference\":-380.0,\"preSettlement\":79060.0,\"ask1\":77950.0,\"ask2\":77960.0,\"ask3\":77970.0,\"ask4\":77980.0,\"ask5\":77990.0,\"askVol1\":1,\"askVol2\":2,\"askVol3\":2,\"askVol4\":2,\"askVol5\":2,\"bid1\":77920.0,\"bid2\":77910.0,\"bid3\":77900.0,\"bid4\":77890.0,\"bid5\":77880.0,\"bidVol1\":3,\"bidVol2\":4,\"bidVol3\":3,\"bidVol4\":3,\"bidVol5\":2}"
+}, {
+  "key" : "future_tick_RI",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"RI2511\",\"exchange\":\"CZCE\",\"open\":0.0,\"high\":0.0,\"low\":0.0,\"preClose\":2479.0,\"lastPrice\":2479.0,\"last\":null,\"underlyingSymbol\":\"RI\",\"volume\":0,\"tickTime\":\"1761807605856\",\"openInterest\":0.0,\"priceChangeRatio\":0.000000,\"priceDifference\":0.0,\"preSettlement\":2479.0,\"ask1\":0.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":0,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":0.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":0,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_LR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"LR2511\",\"exchange\":\"CZCE\",\"open\":0.0,\"high\":0.0,\"low\":0.0,\"preClose\":2360.0,\"lastPrice\":2360.0,\"last\":null,\"underlyingSymbol\":\"LR\",\"volume\":0,\"tickTime\":\"1761807605856\",\"openInterest\":0.0,\"priceChangeRatio\":0.000000,\"priceDifference\":0.0,\"preSettlement\":2360.0,\"ask1\":0.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":0,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":0.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":0,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_FU",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"FU2601\",\"exchange\":\"SHFE\",\"open\":2745.0,\"high\":2748.0,\"low\":2741.0,\"preClose\":2751.0,\"lastPrice\":2747.0,\"last\":null,\"underlyingSymbol\":\"FU\",\"volume\":47893,\"tickTime\":\"1761829968133\",\"openInterest\":202588.0,\"priceChangeRatio\":-0.001454,\"priceDifference\":-4.0,\"preSettlement\":2760.0,\"ask1\":2747.0,\"ask2\":2748.0,\"ask3\":2749.0,\"ask4\":2750.0,\"ask5\":2751.0,\"askVol1\":103,\"askVol2\":662,\"askVol3\":345,\"askVol4\":810,\"askVol5\":250,\"bid1\":2746.0,\"bid2\":2745.0,\"bid3\":2744.0,\"bid4\":2743.0,\"bid5\":2742.0,\"bidVol1\":737,\"bidVol2\":496,\"bidVol3\":474,\"bidVol4\":490,\"bidVol5\":582}"
+}, {
+  "key" : "future_tick_JR",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"JR2511\",\"exchange\":\"CZCE\",\"open\":0.0,\"high\":0.0,\"low\":0.0,\"preClose\":2662.0,\"lastPrice\":2662.0,\"last\":null,\"underlyingSymbol\":\"JR\",\"volume\":0,\"tickTime\":\"1761807605856\",\"openInterest\":0.0,\"priceChangeRatio\":0.000000,\"priceDifference\":0.0,\"preSettlement\":2662.0,\"ask1\":0.0,\"ask2\":0.0,\"ask3\":0.0,\"ask4\":0.0,\"ask5\":0.0,\"askVol1\":0,\"askVol2\":0,\"askVol3\":0,\"askVol4\":0,\"askVol5\":0,\"bid1\":0.0,\"bid2\":0.0,\"bid3\":0.0,\"bid4\":0.0,\"bid5\":0.0,\"bidVol1\":0,\"bidVol2\":0,\"bidVol3\":0,\"bidVol4\":0,\"bidVol5\":0}"
+}, {
+  "key" : "future_tick_AD",
+  "type" : "string",
+  "ttl" : -1,
+  "value" : "{\"code\":\"AD2601\",\"exchange\":\"SHFE\",\"open\":20690.0,\"high\":20690.0,\"low\":20620.0,\"preClose\":20705.0,\"lastPrice\":20675.0,\"last\":null,\"underlyingSymbol\":\"AD\",\"volume\":167,\"tickTime\":\"1761829791607\",\"openInterest\":13105.0,\"priceChangeRatio\":-0.001449,\"priceDifference\":-30.0,\"preSettlement\":20730.0,\"ask1\":20675.0,\"ask2\":20680.0,\"ask3\":20685.0,\"ask4\":20690.0,\"ask5\":20695.0,\"askVol1\":12,\"askVol2\":45,\"askVol3\":7,\"askVol4\":1,\"askVol5\":5,\"bid1\":20670.0,\"bid2\":20665.0,\"bid3\":20660.0,\"bid4\":20655.0,\"bid5\":20650.0,\"bidVol1\":4,\"bidVol2\":41,\"bidVol3\":18,\"bidVol4\":15,\"bidVol5\":3}"
+} ]

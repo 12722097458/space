@@ -1,0 +1,13 @@
+update event_registration set region_name = '四川' where event_id = 3 and user_id = 34853;
+update event_registration set region_name = '广东' where event_id = 3 and user_id = 35743;
+update event_registration set region_name = '重庆市' where event_id = 3 and user_id = 18074;
+update event_registration set region_name = '广东' where event_id = 3 and user_id = 10027;
+update event_registration set region_name = '四川' where event_id = 3 and user_id = 35725;
+update event_registration set region_name = '四川' where event_id = 3 and user_id = 20798;
+update event_registration set region_name = '广东' where event_id = 3 and user_id = 10027;
+update event_registration set region_name = '福建省' where event_id = 3 and user_id = 16819;
+update event_registration set region_name = '广东' where event_id = 3 and user_id = 19917;
+update event_registration set region_name = '重庆市' where event_id = 3 and user_id = 35608;
+update event_registration set region_name = '广东' where event_id = 3 and user_id = 35617;
+update event_registration set region_name = '四川' where event_id = 3 and user_id = 10057;
+update event_registration set region_name = '江苏' where event_id = 3 and user_id = 21661;
