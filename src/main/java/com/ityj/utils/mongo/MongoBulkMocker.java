@@ -87,7 +87,7 @@ public class MongoBulkMocker {
                 .append("analysis", analysisTemplates[random.nextInt(analysisTemplates.length)])
                 .append("decisions", Collections.emptyList())
                 .append("llm_duration", 5.0 + (random.nextDouble() * 10))
-                .append("create_at", Date.from(randomPast)); // 驱动会自动处理为 BSON Date 类型
+                .append("create_at", Date.from(randomPast));
     }
 
     private static Map<Integer, String> getAgentMapping() {
