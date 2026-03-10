@@ -126,8 +126,8 @@ private static final String EXCLUDED_USER_IDS ="";
                 "t5.signup_active_user_count t15_active, t6.signup_user_count t15_signup, " +
                 "t7.signup_active_user_count t30_active, t8.signup_user_count t30_signup " +
                 "FROM " +
-                "(SELECT APPROX_DISTINCT(user_id) signup_active_user_count FROM log WHERE user_id IN (SELECT distinct user_id FROM log WHERE event='user_signup' AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) t1, " +
-                "(SELECT APPROX_DISTINCT(user_id) signup_user_count FROM log WHERE event='user_signup' AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) t2, " +
+                "(SELECT COUNT(DISTINCT user_id) signup_active_user_count FROM log WHERE user_id IN (SELECT distinct user_id FROM log WHERE event='user_signup' AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) t1, " +
+                "(SELECT COUNT(DISTINCT user_id) signup_user_count FROM log WHERE event='user_signup' AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) t2, " +
                 "(SELECT COUNT(DISTINCT user_id) signup_active_user_count FROM log WHERE user_id IN (SELECT distinct user_id FROM log WHERE event='user_signup' AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) t3, " +
                 "(SELECT COUNT(DISTINCT user_id) signup_user_count FROM log WHERE event='user_signup' AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) t4, " +
                 "(SELECT COUNT(DISTINCT user_id) signup_active_user_count FROM log WHERE user_id IN (SELECT distinct user_id FROM log WHERE event='user_signup' AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) AND " + excludeCondition + " AND __time__ >= %d AND __time__ < %d) t5, " +
