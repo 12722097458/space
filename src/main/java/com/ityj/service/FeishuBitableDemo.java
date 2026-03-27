@@ -19,14 +19,18 @@ import java.util.Set;
  */
 public class FeishuBitableDemo {
 
-    private static final String APP_TOKEN = "AoX0w6TfoiwCHCkWdjsczXaFnzd";
-    private static final String TABLE_ID = "tbl1u20RQ4Q0lUz6";
+    private static String APP_TOKEN = null;
+    private static String TABLE_ID = null;
+    // 飞书 user_access_token，过期后需要更新
+    private static String FEISHU_TOKEN = null;
+
+    private static String currentFeishuAuth = FEISHU_TOKEN;
+
+
+
     private static final String FEISHU_BASE_URL =
             "https://open.feishu.cn/open-apis/bitable/v1/apps/" + APP_TOKEN + "/tables/" + TABLE_ID;
 
-    // 飞书 user_access_token，过期后需要更新
-    private static final String FEISHU_TOKEN = "Bearer u-eAN95N7GV5c94yqN7Bfoz3hl0y5kg5ojVEEa7MUw0G6Z";
-    private static String currentFeishuAuth = FEISHU_TOKEN;
 
     // 留存率数据接口
     private static final String RETENTION_API = "http://admin.web.pandaai.online/admin-api/user/users/retention/daily";
