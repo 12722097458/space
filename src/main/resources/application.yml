@@ -1,6 +1,55 @@
 spring:
   profiles:
     active: dev
+
+# 飞书多维表格 + 留存接口（可用环境变量覆盖，便于各环境部署）
+feishu:
+  bitable:
+    app-id: ${FEISHU_APP_ID:cli_a94fb5909138dbde}
+    app-token: ${FEISHU_APP_TOKEN:AoX0w6TfoiwCHCkWdjsczXaFnzd}
+    table-id: ${FEISHU_TABLE_ID:tbl1u20RQ4Q0lUz6}
+    open-api-base-url: ${FEISHU_OPEN_API_BASE_URL:https://open.feishu.cn/open-apis/bitable/v1/apps}
+    tenant-access-token-url: ${FEISHU_TENANT_TOKEN_URL:https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal}
+    batch-limit: ${FEISHU_BATCH_LIMIT:500}
+    page-size: ${FEISHU_PAGE_SIZE:100}
+    # 多表格：每个 key 对应不同 table-id 与数据源；列映射为空时仍使用内置留存字段名
+    tables:
+      default:
+        table-id: ${FEISHU_TABLE_ID:tbl1u20RQ4Q0lUz6}
+        retention:
+          url: ${RETENTION_API_URL:https://admin.web.pandaai.online/admin-api/user/users/retention/daily}
+          authorization: ${RETENTION_API_AUTH:Bearer test1}
+          start-param-name: ${RETENTION_START_PARAM:startTime}
+          end-param-name: ${RETENTION_END_PARAM:endTime}
+        columns:
+          - feishu-field: 日期
+            source-key: date
+          - feishu-field: 注册数
+            source-key: registerCount
+          - feishu-field: 第1天
+            source-key: day1Rate
+            default-value: "-"
+          - feishu-field: 第2天
+            source-key: day2Rate
+            default-value: "-"
+          - feishu-field: 第3天
+            source-key: day3Rate
+            default-value: "-"
+          - feishu-field: 第4天
+            source-key: day4Rate
+            default-value: "-"
+          - feishu-field: 第5天
+            source-key: day5Rate
+            default-value: "-"
+          - feishu-field: 第6天
+            source-key: day6Rate
+            default-value: "-"
+          - feishu-field: 第7天
+            source-key: day7Rate
+            default-value: "-"
+          - feishu-field: 第8天
+            source-key: day8Rate
+            default-value: "-"
 panda:
   jwt:
     location: classpath:panda.jks
