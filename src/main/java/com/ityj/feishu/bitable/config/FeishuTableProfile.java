@@ -17,9 +17,6 @@ public class FeishuTableProfile {
 
     private String tableId;
 
-    /** 拉取数据用的接口配置；走 {@link FeishuBitableSyncService#sync(String, String, String)} 时需要 */
-    private FeishuBitableProperties.Retention retention = new FeishuBitableProperties.Retention();
-
     /**
      * 列映射：飞书列名 &lt;- 源 JSON 字段路径。
      * 为空时若走 {@link FeishuBitableSyncService#sync(String, String, String)} 则使用内置留存字段映射。

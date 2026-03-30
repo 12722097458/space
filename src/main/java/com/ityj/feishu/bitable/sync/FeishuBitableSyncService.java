@@ -5,29 +5,33 @@ import cn.hutool.http.HttpResponse;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.ityj.feishu.bitable.api.FeishuBitableApiPaths;
+import com.ityj.feishu.bitable.client.RetentionApiClient;
 import com.ityj.feishu.bitable.config.FeishuTableProfile;
-import com.ityj.feishu.bitable.auth.FeishuConfig;
 import com.ityj.feishu.bitable.config.FeishuBitableProperties;
+import com.ityj.feishu.bitable.config.RetentionApiSettings;
 import com.ityj.feishu.bitable.mapping.ColumnBinding;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
  * 飞书多维表格：支持多 {@code table_id} 与不同数据源、列映射（表头），以及预组装行数据写入。
  */
+@Slf4j
 @Service
 public class FeishuBitableSyncService {
 
     private final FeishuBitableProperties props;
+    private final RetentionApiClient retentionApiClient;
 
     private String currentFeishuAuth;
     private long tenantTokenExpiresAtEpochMs;
 
-    public FeishuBitableSyncService(FeishuBitableProperties props) {
+    public FeishuBitableSyncService(FeishuBitableProperties props, RetentionApiClient retentionApiClient) {
         this.props = props;
+        this.retentionApiClient = retentionApiClient;
     }
 
     /**
@@ -46,8 +50,8 @@ public class FeishuBitableSyncService {
             batchDeleteRecords(base, recordIds);
             System.out.println("[" + profileKey + "] 已清空表格历史数据");
         }
-
-        List<JSONObject> retentionData = fetchRetentionData(profile.getRetention(), startTime, endTime);
+        RetentionApiSettings retentionApiSettings = props.getRetention();
+        List<JSONObject> retentionData = retentionApiClient.fetchDailyRows(retentionApiSettings, startTime, endTime);
         System.out.println("[" + profileKey + "] 查到业务数据 " + retentionData.size() + " 条");
 
         if (retentionData.isEmpty()) {
@@ -67,6 +71,59 @@ public class FeishuBitableSyncService {
         System.out.println("[" + profileKey + "] 数据写入完成");
     }
 
+    /**
+     * 在表末尾新增一条记录（飞书 OpenAPI：POST .../records，与官方 Java SDK 的 create 记录一致）。
+     * <p>
+     * 仅写入当前表中已存在的字段名；不存在的列名会跳过并打日志。
+     *
+     * @return 新增行的 {@code record_id}
+     */
+    public String appendRecord(String profileKey, Map<String, Object> fields) {
+        if (fields == null || fields.isEmpty()) {
+            throw new IllegalArgumentException("fields 不能为空");
+        }
+        FeishuTableProfile profile = resolveProfile(profileKey);
+        String base = props.bitableBaseUrlForTable(profile.getTableId());
+        ensureTenantToken();
+
+        Set<String> existingFieldNames = fetchExistingFieldNames(base);
+        Set<String> warned = new HashSet<>();
+        JSONObject feishuFields = new JSONObject();
+        for (Map.Entry<String, Object> e : fields.entrySet()) {
+            putIfFieldExists(feishuFields, existingFieldNames, e.getKey(), e.getValue(), warned);
+        }
+        if (feishuFields.isEmpty()) {
+            throw new IllegalArgumentException("没有可写入的字段，请核对列名是否与多维表格中的字段名称完全一致");
+        }
+
+        JSONObject body = new JSONObject();
+        body.set("fields", feishuFields);
+        String path = base + FeishuBitableApiPaths.RECORDS;
+        HttpResponse response = HttpRequest.post(path)
+                .header("Authorization", currentFeishuAuth)
+                .header("Content-Type", "application/json; charset=utf-8")
+                .body(body.toString())
+                .execute();
+        response = retryIfTokenExpired(response, path, body.toString());
+
+        ensureHttpOk(response, "records/create");
+        JSONObject result = JSONUtil.parseObj(response.body());
+        JSONObject data = ensureFeishuSuccess(result, "records/create");
+        JSONObject record = data.getJSONObject("record");
+        if (record == null) {
+            throw new IllegalStateException("records/create 响应缺少 record: " + response.body());
+        }
+        String recordId = record.getStr("record_id");
+        if (recordId == null || recordId.isBlank()) {
+            recordId = record.getStr("id");
+        }
+        if (recordId == null || recordId.isBlank()) {
+            throw new IllegalStateException("records/create 响应缺少 record_id: " + response.body());
+        }
+        log.info("[{}] 新增记录成功 recordId={}", profileKey, recordId);
+        return recordId;
+    }
+
     private FeishuTableProfile resolveProfile(String profileKey) {
         Map<String, FeishuTableProfile> tables = props.getTables();
         if (tables != null && tables.containsKey(profileKey)) {
@@ -74,15 +131,11 @@ public class FeishuBitableSyncService {
             if (p.getTableId() == null || p.getTableId().isBlank()) {
                 throw new IllegalStateException("feishu.bitable.tables." + profileKey + ".table-id 未配置");
             }
-            if (p.getRetention() == null) {
-                p.setRetention(new FeishuBitableProperties.Retention());
-            }
             return p;
         }
         if ("default".equals(profileKey) && props.getTableId() != null && !props.getTableId().isBlank()) {
             FeishuTableProfile legacy = new FeishuTableProfile();
             legacy.setTableId(props.getTableId());
-            legacy.setRetention(props.getRetention());
             legacy.setColumns(Collections.emptyList());
             return legacy;
         }
@@ -102,7 +155,7 @@ public class FeishuBitableSyncService {
     private void refreshTenantAccessTokenInternal() {
         JSONObject req = new JSONObject();
         req.set("app_id", props.getAppId());
-        req.set("app_secret", FeishuConfig.appSecret());
+        req.set("app_secret", props.getAppSecret());
 
         HttpResponse response = HttpRequest.post(props.getTenantAccessTokenUrl())
                 .header("Content-Type", "application/json")
@@ -133,10 +186,7 @@ public class FeishuBitableSyncService {
         int pageSize = props.getPageSize();
 
         while (hasMore) {
-            String url = bitableBase + "/records/search?page_size=" + pageSize;
-            if (pageToken != null) {
-                url += "&page_token=" + pageToken;
-            }
+            String url = FeishuBitableApiPaths.buildRecordsSearchUrl(bitableBase, pageSize, pageToken);
 
             HttpResponse response = HttpRequest.post(url)
                     .header("Authorization", currentFeishuAuth)
@@ -175,7 +225,7 @@ public class FeishuBitableSyncService {
             JSONObject body = new JSONObject();
             body.set("records", batch);
 
-            String path = bitableBase + "/records/batch_delete";
+            String path = bitableBase + FeishuBitableApiPaths.RECORDS_BATCH_DELETE;
             HttpResponse response = HttpRequest.post(path)
                     .header("Authorization", currentFeishuAuth)
                     .header("Content-Type", "application/json; charset=utf-8")
@@ -188,33 +238,6 @@ public class FeishuBitableSyncService {
             ensureFeishuSuccess(JSONUtil.parseObj(resp), "records/batch_delete");
             System.out.println("删除第 " + (i / batchSize + 1) + " 批成功, 条数=" + batch.size());
         }
-    }
-
-    private List<JSONObject> fetchRetentionData(FeishuBitableProperties.Retention r, String startTime, String endTime) {
-        String q1 = URLEncoder.encode(startTime, StandardCharsets.UTF_8);
-        String q2 = URLEncoder.encode(endTime, StandardCharsets.UTF_8);
-        String url = r.getUrl()
-                + "?" + r.getStartParamName() + "=" + q1
-                + "&" + r.getEndParamName() + "=" + q2;
-
-        HttpResponse response = HttpRequest.get(url)
-                .header("Authorization", r.getAuthorization())
-                .execute();
-
-        String resp = response.body();
-        ensureHttpOk(response, "retention/daily");
-        JSONObject result = JSONUtil.parseObj(resp);
-        ensureBizCode(result, "retention/daily");
-
-        JSONArray dataArray = result.getJSONArray("data");
-        if (dataArray == null) {
-            return Collections.emptyList();
-        }
-        List<JSONObject> list = new ArrayList<>();
-        for (int i = 0; i < dataArray.size(); i++) {
-            list.add(dataArray.getJSONObject(i));
-        }
-        return list;
     }
 
     private void batchCreateRecords(
@@ -247,7 +270,7 @@ public class FeishuBitableSyncService {
             JSONObject body = new JSONObject();
             body.set("records", records);
 
-            String path = bitableBase + "/records/batch_create";
+            String path = bitableBase + FeishuBitableApiPaths.RECORDS_BATCH_CREATE;
             HttpResponse response = HttpRequest.post(path)
                     .header("Authorization", currentFeishuAuth)
                     .header("Content-Type", "application/json; charset=utf-8")
@@ -291,7 +314,7 @@ public class FeishuBitableSyncService {
             JSONObject body = new JSONObject();
             body.set("records", records);
 
-            String path = bitableBase + "/records/batch_create";
+            String path = bitableBase + FeishuBitableApiPaths.RECORDS_BATCH_CREATE;
             HttpResponse response = HttpRequest.post(path)
                     .header("Authorization", currentFeishuAuth)
                     .header("Content-Type", "application/json; charset=utf-8")
@@ -369,10 +392,7 @@ public class FeishuBitableSyncService {
         boolean hasMore = true;
         int pageSize = props.getPageSize();
         while (hasMore) {
-            String url = bitableBase + "/fields?page_size=" + pageSize;
-            if (pageToken != null) {
-                url += "&page_token=" + pageToken;
-            }
+            String url = FeishuBitableApiPaths.buildFieldsListUrl(bitableBase, pageSize, pageToken);
             HttpResponse response = HttpRequest.get(url)
                     .header("Authorization", currentFeishuAuth)
                     .execute();
@@ -434,13 +454,6 @@ public class FeishuBitableSyncService {
             return code == 99991677;
         } catch (Exception ignore) {
             return false;
-        }
-    }
-
-    private static void ensureBizCode(JSONObject response, String action) {
-        int code = response.getInt("code", -1);
-        if (code != 0) {
-            throw new IllegalStateException(action + " biz_code=" + code + ", resp=" + response);
         }
     }
 
