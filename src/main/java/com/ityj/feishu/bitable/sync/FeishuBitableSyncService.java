@@ -35,7 +35,7 @@ public class FeishuBitableSyncService {
     }
 
     /**
-     * @param profileKey {@code feishu.bitable.tables} 中的 key；未配置多表时可用 {@code default}，走根级 {@code table-id}
+     * @param profileKey {@code feishu.bitable.tables} 中的 key（如 {@code retention_daily}）
      */
     public void sync(String profileKey, String startTime, String endTime) {
         FeishuTableProfile profile = resolveProfile(profileKey);
@@ -132,12 +132,6 @@ public class FeishuBitableSyncService {
                 throw new IllegalStateException("feishu.bitable.tables." + profileKey + ".table-id 未配置");
             }
             return p;
-        }
-        if ("default".equals(profileKey) && props.getTableId() != null && !props.getTableId().isBlank()) {
-            FeishuTableProfile legacy = new FeishuTableProfile();
-            legacy.setTableId(props.getTableId());
-            legacy.setColumns(Collections.emptyList());
-            return legacy;
         }
         throw new IllegalArgumentException("Unknown table profile: " + profileKey);
     }

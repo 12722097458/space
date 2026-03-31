@@ -39,14 +39,15 @@ public class FeishuBitableController {
     /**
      * 示例：
      * <pre>
-     * GET /feishu-bitable/sync?profileKey=default&startTime=2026-03-20&endTime=2026-03-26
+     * GET /feishu-bitable/sync?profileKey=retention_daily&startTime=2026-03-20&endTime=2026-03-26
      * GET /feishu-bitable/sync?profileKey=channel-a
-     * http://localhost:8888/feishu-bitable/sync?profileKey=default&startTime=2026-03-20&endTime=2026-03-26
+     * http://localhost:8888/feishu-bitable/sync?profileKey=retention_daily&startTime=2026-03-20&endTime=2026-03-26
      * </pre>
      */
+    // 5-近7日留存数据（日更）, 覆盖已有内容
     @GetMapping("/sync")
     public ResponseEntity<Map<String, Object>> sync(
-            @RequestParam(defaultValue = "default") String profileKey,
+            @RequestParam(defaultValue = "retention_daily") String profileKey,
             @RequestParam(required = false) String startTime,
             @RequestParam(required = false) String endTime) {
 
@@ -82,7 +83,7 @@ public class FeishuBitableController {
      * Content-Type: application/json
      *
      * {
-     *   "profileKey": "default",
+     *   "profileKey": "retention_daily",
      *   "fields": {
      *     "日期": "2026-03-30",
      *     "注册数": 100
@@ -91,17 +92,17 @@ public class FeishuBitableController {
      * </pre>
      */
     @PostMapping("/records")
-    // curl --location 'http://localhost:8888/feishu-bitable/records?profileKey=default' \
-    //--header 'Content-Type: application/json' \
-    //--data '{
-    //
-    //    "profileKey":"default",
-    //    "fields" : {
-    //        "注册数":88,
-    //        "第6天":"333%"
-    //    }
-    //
-    //}'
+//     curl --location 'http://localhost:8888/feishu-bitable/records?profileKey=retention_daily' \
+//    --header 'Content-Type: application/json' \
+//    --data '{
+//
+//        "profileKey":"retention_daily",
+//        "fields" : {
+//            "注册数":88,
+//            "第6天":"333%"
+//        }
+//
+//    }'
     public ResponseEntity<Map<String, Object>> appendRecord(@RequestBody CreateBitableRecordRequest request) {
         if (request == null || request.getFields() == null || request.getFields().isEmpty()) {
             return ResponseEntity.badRequest().body(Map.of(
@@ -111,7 +112,7 @@ public class FeishuBitableController {
         }
         String profileKey = Optional.ofNullable(request.getProfileKey())
                 .filter(s -> !s.isBlank())
-                .orElse("default");
+                .orElse("retention_daily");
         try {
             String recordId = syncService.appendRecord(profileKey, request.getFields());
             Map<String, Object> resp = new LinkedHashMap<>();

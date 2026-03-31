@@ -6,8 +6,7 @@ feishu:
   bitable:
     app-id: ${FEISHU_APP_ID:cli_a94fb5909138dbde}
     app-secret: ${FEISHU_APP_SECRET:F5pbn33ngrK1YX4zpC80ibezKCKp1gf7}
-    app-token: ${FEISHU_APP_TOKEN:AoX0w6TfoiwCHCkWdjsczXaFnzd}
-    table-id: ${FEISHU_TABLE_ID:tbl1u20RQ4Q0lUz6}
+    app-token: ${FEISHU_APP_TOKEN:J4zVwHSXQiyK05kBGXJcaJoJnHe}
     open-api-base-url: ${FEISHU_OPEN_API_BASE_URL:https://open.feishu.cn/open-apis/bitable/v1/apps}
     tenant-access-token-url: ${FEISHU_TENANT_TOKEN_URL:https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal}
     batch-limit: ${FEISHU_BATCH_LIMIT:500}
@@ -19,8 +18,8 @@ feishu:
       end-param-name: ${RETENTION_END_PARAM:endTime}
     # 多表格：每个 key 对应不同 table-id；需要单独数据源时在对应 table 下配置 retention
     tables:
-      default:
-        table-id: ${FEISHU_TABLE_ID:tbl1u20RQ4Q0lUz6}
+      retention_daily:
+        table-id: ${FEISHU_TABLE_ID:tbldmYq9tgVarQLL}
         columns:
           - feishu-field: 日期
             source-key: date
@@ -43,12 +42,6 @@ feishu:
             default-value: "-"
           - feishu-field: 第6天
             source-key: day6Rate
-            default-value: "-"
-          - feishu-field: 第7天
-            source-key: day7Rate
-            default-value: "-"
-          - feishu-field: 第8天
-            source-key: day8Rate
             default-value: "-"
 panda:
   jwt:

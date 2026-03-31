@@ -13,8 +13,8 @@ import java.util.Map;
 @Setter
 public class CreateBitableRecordRequest {
 
-    /** 与 {@code feishu.bitable.tables} 的 key 一致，默认 {@code default} */
-    private String profileKey = "default";
+    /** 与 {@code feishu.bitable.tables} 的 key 一致，默认 {@code retention_daily} */
+    private String profileKey = "retention_daily";
 
     /**
      * 列名 → 单元格值，格式需符合飞书字段类型（如日期为毫秒时间戳、人员为数组等）。

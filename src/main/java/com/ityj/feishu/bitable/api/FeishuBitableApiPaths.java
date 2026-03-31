@@ -1,11 +1,14 @@
 package com.ityj.feishu.bitable.api;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 飞书多维表格 Open API 路径（相对于
  * {@code .../open-apis/bitable/v1/apps/{app_token}/tables/{table_id}}）。
  * <p>
  * 官方文档：<a href="https://open.feishu.cn/document/server-docs/docs/bitable-v1/bitable-overview">多维表格概述</a>
  */
+@Slf4j
 public final class FeishuBitableApiPaths {
 
     private FeishuBitableApiPaths() {
