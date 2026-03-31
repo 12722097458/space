@@ -6,13 +6,17 @@ import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.ityj.feishu.bitable.api.FeishuBitableApiPaths;
-import com.ityj.feishu.bitable.client.RetentionApiClient;
-import com.ityj.feishu.bitable.config.FeishuTableProfile;
 import com.ityj.feishu.bitable.config.FeishuBitableProperties;
-import com.ityj.feishu.bitable.config.RetentionApiSettings;
+import com.ityj.feishu.bitable.config.FeishuTableProfile;
 import com.ityj.feishu.bitable.mapping.ColumnBinding;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
@@ -24,14 +28,18 @@ import java.util.*;
 public class FeishuBitableSyncService {
 
     private final FeishuBitableProperties props;
-    private final RetentionApiClient retentionApiClient;
+    private final RestTemplate restTemplate;
+
+    private static final String RETENTION_API_URL =
+            "http://admin.web.pandaai.online/admin-api/user/users/retention/daily";
+    private static final String RETENTION_API_AUTH = "Bearer test1";
 
     private String currentFeishuAuth;
     private long tenantTokenExpiresAtEpochMs;
 
-    public FeishuBitableSyncService(FeishuBitableProperties props, RetentionApiClient retentionApiClient) {
+    public FeishuBitableSyncService(FeishuBitableProperties props, RestTemplate restTemplate) {
         this.props = props;
-        this.retentionApiClient = retentionApiClient;
+        this.restTemplate = restTemplate;
     }
 
     /**
@@ -39,36 +47,111 @@ public class FeishuBitableSyncService {
      */
     public void sync(String profileKey, String startTime, String endTime) {
         FeishuTableProfile profile = resolveProfile(profileKey);
-        String base = props.bitableBaseUrlForTable(profile.getTableId());
-        ensureTenantToken();
+        String bitableBase = props.bitableBaseUrlForTable(profile.getTableId());
+
+        List<JSONObject> retentionData = fetchRetentionData(profileKey, startTime, endTime);
+        List<ColumnBinding> bindings = profile.getColumns();
+
+        sync(profileKey, bitableBase, retentionData, bindings);
+    }
+
+    /**
+     * 同步指定多维表格的数据（调用方直接提供数据和列映射）。
+     *
+     * @param profileKey    逻辑表名，仅用于日志
+     * @param bitableBase   当前表的根路径，例如 {@code https://.../apps/{appToken}/tables/{tableId}}
+     * @param retentionData 待写入的业务数据列表
+     * @param bindings      列映射配置（飞书列名 <- 源 JSON 字段路径）
+     */
+    public void sync(String profileKey,
+                     String bitableBase,
+                     List<JSONObject> retentionData,
+                     List<ColumnBinding> bindings) {
         Set<String> warned = new HashSet<>();
 
-        List<String> recordIds = searchAllRecordIds(base);
-        System.out.println("[" + profileKey + "] 查到历史记录 " + recordIds.size() + " 条");
-
-        if (!recordIds.isEmpty()) {
-            batchDeleteRecords(base, recordIds);
-            System.out.println("[" + profileKey + "] 已清空表格历史数据");
-        }
-        RetentionApiSettings retentionApiSettings = props.getRetention();
-        List<JSONObject> retentionData = retentionApiClient.fetchDailyRows(retentionApiSettings, startTime, endTime);
-        System.out.println("[" + profileKey + "] 查到业务数据 " + retentionData.size() + " 条");
-
-        if (retentionData.isEmpty()) {
+        if (retentionData == null || retentionData.isEmpty()) {
             System.out.println("[" + profileKey + "] 数据为空，跳过写入");
             return;
         }
-
-        Set<String> existingFieldNames = fetchExistingFieldNames(base);
-        System.out.println("[" + profileKey + "] 飞书表字段数: " + existingFieldNames.size());
-
-        List<ColumnBinding> bindings = profile.getColumns();
-        if (bindings != null && !bindings.isEmpty()) {
-            batchCreateRecords(base, retentionData, existingFieldNames, bindings, warned);
-        } else {
-            batchCreateRecordsLegacy(base, retentionData, existingFieldNames, warned);
+        if (bindings == null || bindings.isEmpty()) {
+            log.warn("[{}] columns 为空，无法进行字段映射，已跳过写入", profileKey);
+            return;
         }
+
+        System.out.println("[" + profileKey + "] 查到业务数据 " + retentionData.size() + " 条");
+
+        List<String> recordIds = searchAllRecordIds(bitableBase);
+        System.out.println("[" + profileKey + "] 查到历史记录 " + recordIds.size() + " 条");
+
+        if (!recordIds.isEmpty()) {
+            batchDeleteRecords(bitableBase, recordIds);
+            System.out.println("[" + profileKey + "] 已清空表格历史数据");
+        }
+
+        Set<String> existingFieldNames = fetchExistingFieldNames(bitableBase);
+        System.out.println("[" + profileKey + "] 飞书表字段数: " + existingFieldNames.size());
+        batchCreateRecords(bitableBase, retentionData, existingFieldNames, bindings, warned);
         System.out.println("[" + profileKey + "] 数据写入完成");
+    }
+
+    /**
+     * 获取飞书多维表格的业务数据。
+     * <p>
+     * 注意：该方法用于“非 HTTP 数据源”的接入（例如直接从内部计算/DB/Redis/本地文件等）。
+     * 当前先提供占位实现，后续你可以在这里按业务接入真实数据源。
+     *
+     * @return 期望写入表格的一行数据列表（每个元素是源 JSON 对象，供列映射提取字段）
+     */
+    private List<JSONObject> fetchRetentionData(String profileKey, String startTime, String endTime) {
+        String url = RETENTION_API_URL + "?startTime=" + startTime + "&endTime=" + endTime;
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", RETENTION_API_AUTH);
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+        try {
+            log.info("[{}] 调用留存数据接口, url={}", profileKey, url);
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+            if (!response.getStatusCode().is2xxSuccessful()) {
+                log.error("[{}] 调用留存数据接口失败, httpStatus={}, body={}", profileKey,
+                        response.getStatusCode().value(), response.getBody());
+                return Collections.emptyList();
+            }
+
+            String body = response.getBody();
+            if (body == null || body.isBlank()) {
+                log.warn("[{}] 留存数据接口返回空响应", profileKey);
+                return Collections.emptyList();
+            }
+
+            JSONObject json = JSONUtil.parseObj(body);
+            int code = json.getInt("code", -1);
+            if (code != 0) {
+                log.error("[{}] 留存数据接口业务失败, code={}, msg={}", profileKey, code, json.getStr("msg"));
+                return Collections.emptyList();
+            }
+
+            JSONArray dataArr = json.getJSONArray("data");
+            if (dataArr == null || dataArr.isEmpty()) {
+                log.info("[{}] 留存数据接口返回 data 为空", profileKey);
+                return Collections.emptyList();
+            }
+
+            List<JSONObject> list = new ArrayList<>(dataArr.size());
+            for (int i = 0; i < dataArr.size(); i++) {
+                JSONObject item = dataArr.getJSONObject(i);
+                if (item != null) {
+                    list.add(item);
+                }
+            }
+            log.info("[{}] 留存数据接口返回记录数: {}", profileKey, list.size());
+            return list;
+        } catch (RestClientException ex) {
+            log.error("[{}] 调用留存数据接口出现异常", profileKey, ex);
+            return Collections.emptyList();
+        } catch (Exception ex) {
+            log.error("[{}] 解析留存数据接口响应出现异常", profileKey, ex);
+            return Collections.emptyList();
+        }
     }
 
     /**
@@ -279,50 +362,6 @@ public class FeishuBitableSyncService {
         }
     }
 
-    private void batchCreateRecordsLegacy(
-            String bitableBase,
-            List<JSONObject> dataList,
-            Set<String> existingFieldNames,
-            Set<String> warnedMissingFields) {
-        ensureTenantToken();
-        int batchSize = props.getBatchLimit();
-        for (int i = 0; i < dataList.size(); i += batchSize) {
-            List<JSONObject> batch = dataList.subList(i, Math.min(i + batchSize, dataList.size()));
-
-            JSONArray records = new JSONArray();
-            for (JSONObject item : batch) {
-                JSONObject fields = buildFieldsLegacy(item, existingFieldNames, warnedMissingFields);
-                if (fields.isEmpty()) {
-                    continue;
-                }
-
-                JSONObject record = new JSONObject();
-                record.set("fields", fields);
-                records.add(record);
-            }
-            if (records.isEmpty()) {
-                System.out.println("第 " + (i / batchSize + 1) + " 批无可写入字段，跳过");
-                continue;
-            }
-
-            JSONObject body = new JSONObject();
-            body.set("records", records);
-
-            String path = bitableBase + FeishuBitableApiPaths.RECORDS_BATCH_CREATE;
-            HttpResponse response = HttpRequest.post(path)
-                    .header("Authorization", currentFeishuAuth)
-                    .header("Content-Type", "application/json; charset=utf-8")
-                    .body(body.toString())
-                    .execute();
-            response = retryIfTokenExpired(response, path, body.toString());
-
-            String resp = response.body();
-            ensureHttpOk(response, "records/batch_create");
-            ensureFeishuSuccess(JSONUtil.parseObj(resp), "records/batch_create");
-            System.out.println("写入第 " + (i / batchSize + 1) + " 批成功, 条数=" + records.size());
-        }
-    }
-
     private static JSONObject buildFieldsFromBindings(
             JSONObject item,
             Set<String> existingFieldNames,
@@ -347,21 +386,6 @@ public class FeishuBitableSyncService {
             return JSONUtil.getByPath(item, sourceKey);
         }
         return item.get(sourceKey);
-    }
-
-    private static JSONObject buildFieldsLegacy(JSONObject item, Set<String> existingFieldNames, Set<String> warnedMissingFields) {
-        JSONObject fields = new JSONObject();
-        putIfFieldExists(fields, existingFieldNames, "日期", item.getStr("date"), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "注册数", item.getInt("registerCount", 0), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "第1天", item.getStr("day1Rate", "-"), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "第2天", item.getStr("day2Rate", "-"), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "第3天", item.getStr("day3Rate", "-"), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "第4天", item.getStr("day4Rate", "-"), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "第5天", item.getStr("day5Rate", "-"), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "第6天", item.getStr("day6Rate", "-"), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "第7天", item.getStr("day7Rate", "-"), warnedMissingFields);
-        putIfFieldExists(fields, existingFieldNames, "第8天", item.getStr("day8Rate", "-"), warnedMissingFields);
-        return fields;
     }
 
     private static void putIfFieldExists(

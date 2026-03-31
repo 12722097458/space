@@ -10,12 +10,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 飞书多维表格同步相关配置（URL、鉴权、留存接口参数名等）。
+ * 飞书多维表格同步相关配置（URL、鉴权、批大小、分页等）。
  * <p>
  * 连接参数、批大小、分页等请在 {@code application.yml} 的 {@code feishu.bitable} 下配置，
  * 可用环境变量覆盖，例如 {@code FEISHU_APP_ID}、{@code FEISHU_APP_SECRET}、{@code FEISHU_APP_TOKEN}。
- * 留存等业务接口见 {@link RetentionApiSettings}（{@code feishu.bitable.retention}）；若某表需要不同数据源，可在
- * {@code feishu.bitable.tables.<key>.retention} 下单独覆盖。
  */
 @Getter
 @Setter
@@ -39,9 +37,6 @@ public class FeishuBitableProperties {
 
     private int batchLimit;
     private int pageSize;
-
-    /** 留存等拉数接口（全表默认）；单表可覆盖 */
-    private RetentionApiSettings retention;
 
     /**
      * 多表格配置：key 为逻辑名（如 {@code retention_daily}、{@code channel-a}），用于

@@ -11,11 +11,6 @@ feishu:
     tenant-access-token-url: ${FEISHU_TENANT_TOKEN_URL:https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal}
     batch-limit: ${FEISHU_BATCH_LIMIT:500}
     page-size: ${FEISHU_PAGE_SIZE:100}
-    retention:
-      url: ${RETENTION_API_URL:https://admin.web.pandaai.online/admin-api/user/users/retention/daily}
-      authorization: ${RETENTION_API_AUTH:Bearer test1}
-      start-param-name: ${RETENTION_START_PARAM:startTime}
-      end-param-name: ${RETENTION_END_PARAM:endTime}
     # 多表格：每个 key 对应不同 table-id；需要单独数据源时在对应 table 下配置 retention
     tables:
       retention_daily:
