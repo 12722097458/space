@@ -38,6 +38,20 @@ feishu:
           - feishu-field: 第6天
             source-key: day6Rate
             default-value: "-"
+      customer_ratio_daily:
+        table-id: ${FEISHU_TABLE_CUSTOMER_RATIO:tblGNEbmtR6oTIET}
+        columns:
+          - feishu-field: 字段
+            source-key: label
+          - feishu-field: 人数
+            source-key: count
+      new_customer_funnel_daily:
+        table-id: ${FEISHU_TABLE_NEW_FUNNEL:tblsgt15cfJJCYRH}
+        columns:
+          - feishu-field: 文本
+            source-key: label
+          - feishu-field: 数值
+            source-key: value
 panda:
   jwt:
     location: classpath:panda.jks

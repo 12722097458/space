@@ -134,6 +134,54 @@ public class FeishuBitableController {
         }
     }
 
+    // T3-新老客占比
+    @GetMapping("/sync-customer-ratio")
+    public ResponseEntity<Map<String, Object>> syncCustomerRatio(@RequestParam String date) {
+        LocalDate parsedDate;
+        try {
+            parsedDate = LocalDate.parse(date);
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "code", -1,
+                    "msg", "date 格式必须为 yyyy-MM-dd"
+            ));
+        }
+        String dateStr = parsedDate.toString();
+        int rows = syncService.syncCustomerRatio(dateStr);
+
+        Map<String, Object> resp = new LinkedHashMap<>();
+        resp.put("code", 0);
+        resp.put("msg", "sync customer ratio completed");
+        resp.put("profileKey", "customer_ratio_daily");
+        resp.put("date", dateStr);
+        resp.put("rows", rows);
+        return ResponseEntity.ok(resp);
+    }
+
+    // T6-新客漏斗
+    @GetMapping("/sync-new-customer-funnel")
+    public ResponseEntity<Map<String, Object>> syncNewCustomerFunnel(@RequestParam String date) {
+        LocalDate parsedDate;
+        try {
+            parsedDate = LocalDate.parse(date);
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "code", -1,
+                    "msg", "date 格式必须为 yyyy-MM-dd"
+            ));
+        }
+        String dateStr = parsedDate.toString();
+        int rows = syncService.syncNewCustomerFunnel(dateStr);
+
+        Map<String, Object> resp = new LinkedHashMap<>();
+        resp.put("code", 0);
+        resp.put("msg", "sync new customer funnel completed");
+        resp.put("profileKey", "new_customer_funnel_daily");
+        resp.put("date", dateStr);
+        resp.put("rows", rows);
+        return ResponseEntity.ok(resp);
+    }
+
     private static String defaultRetentionStartDateBeijing() {
         return LocalDate.now(ZONE_BEIJING)
                 .minusDays(DEFAULT_RETENTION_START_DAYS_AGO)

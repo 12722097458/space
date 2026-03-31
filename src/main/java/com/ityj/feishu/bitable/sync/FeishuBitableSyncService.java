@@ -32,7 +32,10 @@ public class FeishuBitableSyncService {
 
     private static final String RETENTION_API_URL =
             "http://admin.web.pandaai.online/admin-api/user/users/retention/daily";
-    private static final String RETENTION_API_AUTH = "Bearer test1";
+    private static final String PANDA_ADMIN_API_AUTH = "Bearer test1";
+
+    private static final String STATS_CUSTOMERS_API_URL =
+            "http://localhost:8003/admin-api/user/sls-stats/stats-customers";
 
     private String currentFeishuAuth;
     private long tenantTokenExpiresAtEpochMs;
@@ -105,7 +108,7 @@ public class FeishuBitableSyncService {
     private List<JSONObject> fetchRetentionData(String profileKey, String startTime, String endTime) {
         String url = RETENTION_API_URL + "?startTime=" + startTime + "&endTime=" + endTime;
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", RETENTION_API_AUTH);
+        headers.set("Authorization", PANDA_ADMIN_API_AUTH);
         HttpEntity<Void> entity = new HttpEntity<>(headers);
 
         try {
@@ -151,6 +154,144 @@ public class FeishuBitableSyncService {
         } catch (Exception ex) {
             log.error("[{}] 解析留存数据接口响应出现异常", profileKey, ex);
             return Collections.emptyList();
+        }
+    }
+
+    /**
+     * 覆盖写入“新老客占比”表格。
+     *
+     * @param date 统计日期（yyyy-MM-dd）
+     * @return 实际写入的行数
+     */
+    public int syncCustomerRatio(String date) {
+        String profileKey = "customer_ratio_daily";
+        FeishuTableProfile profile = resolveProfile(profileKey);
+        String bitableBase = props.bitableBaseUrlForTable(profile.getTableId());
+
+        JSONObject metrics = fetchCustomerStats(profileKey, date);
+        if (metrics == null) {
+            log.warn("[{}] metrics 为空，跳过写入", profileKey);
+            return 0;
+        }
+
+        List<JSONObject> rows = new ArrayList<>(2);
+
+        JSONObject registerRow = new JSONObject();
+        registerRow.set("label", "注册");
+        registerRow.set("count", metrics.getInt("registrations", 0));
+        rows.add(registerRow);
+
+        JSONObject returningRow = new JSONObject();
+        returningRow.set("label", "老客");
+        returningRow.set("count", metrics.getInt("returningCustomers", 0));
+        rows.add(returningRow);
+
+        List<ColumnBinding> bindings = profile.getColumns();
+        sync(profileKey, bitableBase, rows, bindings);
+        return rows.size();
+    }
+
+    /**
+     * 覆盖写入“新客漏斗”表格。
+     *
+     * @param date 统计日期（yyyy-MM-dd）
+     * @return 实际写入的行数
+     */
+    public int syncNewCustomerFunnel(String date) {
+        String profileKey = "new_customer_funnel_daily";
+        FeishuTableProfile profile = resolveProfile(profileKey);
+        String bitableBase = props.bitableBaseUrlForTable(profile.getTableId());
+
+        JSONObject metrics = fetchCustomerStats(profileKey, date);
+        if (metrics == null) {
+            log.warn("[{}] metrics 为空，跳过写入", profileKey);
+            return 0;
+        }
+
+        List<JSONObject> rows = new ArrayList<>(4);
+
+        JSONObject visitRow = new JSONObject();
+        visitRow.set("label", "新客访问");
+        visitRow.set("value", metrics.getInt("newVisitorVisits", 0));
+        rows.add(visitRow);
+
+        JSONObject verifyRow = new JSONObject();
+        verifyRow.set("label", "验证");
+        verifyRow.set("value", metrics.getInt("verifications", 0));
+        rows.add(verifyRow);
+
+        JSONObject registerRow = new JSONObject();
+        registerRow.set("label", "注册");
+        registerRow.set("value", metrics.getInt("registrations", 0));
+        rows.add(registerRow);
+
+        JSONObject t0Row = new JSONObject();
+        t0Row.set("label", "T0创建");
+        t0Row.set("value", metrics.getInt("t0WorkflowCreations", 0));
+        rows.add(t0Row);
+
+        List<ColumnBinding> bindings = profile.getColumns();
+        sync(profileKey, bitableBase, rows, bindings);
+        return rows.size();
+    }
+
+    /**
+     * 获取用户统计数据（新客访问、验证、注册、老客、T0 创建等指标）。
+     *
+     * @param profileKey 日志标识
+     * @param date       统计日期（yyyy-MM-dd）
+     * @return metrics 对象（JSON），若无数据则返回 null
+     */
+    private JSONObject fetchCustomerStats(String profileKey, String date) {
+        String url = STATS_CUSTOMERS_API_URL + "?startTime=" + date + "&endTime=" + date;
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", PANDA_ADMIN_API_AUTH);
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+        try {
+            log.info("[{}] 调用客户统计接口, url={}", profileKey, url);
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+            if (!response.getStatusCode().is2xxSuccessful()) {
+                log.error("[{}] 调用客户统计接口失败, httpStatus={}, body={}", profileKey,
+                        response.getStatusCode().value(), response.getBody());
+                return null;
+            }
+
+            String body = response.getBody();
+            if (body == null || body.isBlank()) {
+                log.warn("[{}] 客户统计接口返回空响应", profileKey);
+                return null;
+            }
+
+            JSONObject json = JSONUtil.parseObj(body);
+            int code = json.getInt("code", -1);
+            if (code != 0) {
+                log.error("[{}] 客户统计接口业务失败, code={}, msg={}", profileKey, code, json.getStr("msg"));
+                return null;
+            }
+
+            JSONArray dataArr = json.getJSONArray("data");
+            if (dataArr == null || dataArr.isEmpty()) {
+                log.info("[{}] 客户统计接口返回 data 为空", profileKey);
+                return null;
+            }
+
+            JSONObject first = dataArr.getJSONObject(0);
+            if (first == null) {
+                log.warn("[{}] 客户统计接口 data[0] 为空", profileKey);
+                return null;
+            }
+            JSONObject metrics = first.getJSONObject("metrics");
+            if (metrics == null) {
+                log.warn("[{}] 客户统计接口 metrics 为空", profileKey);
+            }
+            return metrics;
+        } catch (RestClientException ex) {
+            log.error("[{}] 调用客户统计接口出现异常", profileKey, ex);
+            return null;
+        } catch (Exception ex) {
+            log.error("[{}] 解析客户统计接口响应出现异常", profileKey, ex);
+            return null;
         }
     }
 
