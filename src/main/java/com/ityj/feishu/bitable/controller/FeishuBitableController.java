@@ -194,14 +194,22 @@ public class FeishuBitableController {
                     "msg", "date 格式必须为 yyyy-MM-dd"
             ));
         }
-        String dateStr = parsedDate.toString();
-        int rows = syncService.syncRevenueStats(dateStr);
+        LocalDate startDate = LocalDate.now().withDayOfMonth(1);
+        LocalDate endDate = parsedDate;
+        if (endDate.isBefore(startDate)) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "code", -1,
+                    "msg", "date 不能早于本月月初"
+            ));
+        }
+        int rows = syncService.syncRevenueStats(startDate.toString(), endDate.toString());
 
         Map<String, Object> resp = new LinkedHashMap<>();
         resp.put("code", 0);
         resp.put("msg", "sync revenue stats completed");
         resp.put("profileKey", "revenue_daily");
-        resp.put("date", dateStr);
+        resp.put("startTime", startDate.toString());
+        resp.put("endTime", endDate.toString());
         resp.put("rows", rows);
         return ResponseEntity.ok(resp);
     }

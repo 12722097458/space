@@ -19,6 +19,9 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -27,6 +30,8 @@ import java.util.*;
 @Slf4j
 @Service
 public class FeishuBitableSyncService {
+    private static final ZoneId ZONE_BEIJING = ZoneId.of("Asia/Shanghai");
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private final FeishuBitableProperties props;
     private final RestTemplate restTemplate;
@@ -36,7 +41,7 @@ public class FeishuBitableSyncService {
     private static final String PANDA_ADMIN_API_AUTH = "Bearer test1";
 
     private static final String STATS_CUSTOMERS_API_URL =
-            "http://localhost:8003/admin-api/user/sls-stats/stats-customers";
+            "http://admin.web.pandaai.online/admin-api/user/sls-stats/stats-customers";
 
     /**
      * SLS 统计指标接口（单天），用于拼出飞书多维表“指标总览”一行数据。
@@ -45,7 +50,7 @@ public class FeishuBitableSyncService {
             "http://admin.web.pandaai.online/admin-api/user/sls-stats/stats";
 
     private static final String PAID_STATS_API_URL =
-            "http://localhost:8003/admin-api/course/order/stats-by-paid-at";
+            "http://admin.web.pandaai.online/admin-api/course/order/stats-by-paid-at";
 
     private String currentFeishuAuth;
     private long tenantTokenExpiresAtEpochMs;
@@ -414,32 +419,29 @@ public class FeishuBitableSyncService {
     /**
      * 覆盖写入“收入统计”表格。
      *
-     * @param date 所在月份任意一天（yyyy-MM-dd），按“当月月初~昨天”汇总
+     * @param startDate 统计开始日期（yyyy-MM-dd）
+     * @param endDate   统计结束日期（yyyy-MM-dd）
      * @return 实际写入的行数
      */
-    public int syncRevenueStats(String date) {
+    public int syncRevenueStats(String startDate, String endDate) {
         String profileKey = "revenue_daily";
         FeishuTableProfile profile = resolveProfile(profileKey);
         String bitableBase = props.bitableBaseUrlForTable(profile.getTableId());
 
-        LocalDate targetDate = LocalDate.parse(date);
-        LocalDate startOfMonth = targetDate.withDayOfMonth(1);
-        LocalDate yesterday = targetDate.minusDays(1);
-        if (yesterday.isBefore(startOfMonth)) {
-            yesterday = startOfMonth;
+        LocalDate parsedStart = LocalDate.parse(startDate);
+        LocalDate parsedEnd = LocalDate.parse(endDate);
+        if (parsedStart.isAfter(parsedEnd)) {
+            throw new IllegalArgumentException("startDate 不能晚于 endDate");
         }
 
-        String start = startOfMonth.toString();
-        String end = yesterday.toString();
-
-        JSONObject data = fetchRevenueStats(profileKey, start, end);
+        JSONObject data = fetchRevenueStats(profileKey, parsedStart.toString(), parsedEnd.toString());
         if (data == null) {
             log.warn("[{}] 收入统计 data 为空，跳过写入", profileKey);
             return 0;
         }
 
         JSONObject row = new JSONObject();
-        row.set("time", data.getStr("endTime", date));
+        row.set("time", data.getStr("endTime", parsedEnd.toString()));
         row.set("proMemberUserCount", data.getInt("proMemberUserCount", 0));
         row.set("computeRechargeUserCount", data.getInt("computeRechargeUserCount", 0));
         row.set("totalAmount", data.get("totalAmount"));
@@ -736,11 +738,42 @@ public class FeishuBitableSyncService {
             Object value,
             Set<String> warnedMissingFields) {
         if (existingFieldNames.contains(fieldName)) {
-            fields.set(fieldName, value);
+            fields.set(fieldName, normalizeValueForFeishuField(fieldName, value));
             return;
         }
         if (warnedMissingFields.add(fieldName)) {
             log.info("飞书表缺少字段，已跳过写入: {}", fieldName);
+        }
+    }
+
+    /**
+     * 飞书 Date/DateTime 列要求 unix timestamp（毫秒），
+     * 这里对常见“日期/时间”字段名做统一转换，兼容 yyyy-MM-dd / yyyy/MM/dd / yyyy-MM-dd HH:mm:ss。
+     */
+    private static Object normalizeValueForFeishuField(String fieldName, Object value) {
+        if (!(value instanceof String raw)) {
+            return value;
+        }
+        if (fieldName == null || (!fieldName.contains("日期") && !fieldName.contains("时间"))) {
+            return value;
+        }
+        String text = raw.trim();
+        if (text.isEmpty()) {
+            return value;
+        }
+
+        try {
+            LocalDate date = LocalDate.parse(text.replace('/', '-'));
+            return date.atStartOfDay(ZONE_BEIJING).toInstant().toEpochMilli();
+        } catch (Exception ignore) {
+            // ignore
+        }
+
+        try {
+            LocalDateTime dateTime = LocalDateTime.parse(text.replace('/', '-'), DATE_TIME_FORMATTER);
+            return dateTime.atZone(ZONE_BEIJING).toInstant().toEpochMilli();
+        } catch (Exception ignore) {
+            return value;
         }
     }
 

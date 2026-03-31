@@ -6,7 +6,7 @@ feishu:
   bitable:
     app-id: ${FEISHU_APP_ID:cli_a94fb5909138dbde}
     app-secret: ${FEISHU_APP_SECRET:F5pbn33ngrK1YX4zpC80ibezKCKp1gf7}
-    app-token: ${FEISHU_APP_TOKEN:J4zVwHSXQiyK05kBGXJcaJoJnHe}
+    app-token: ${FEISHU_APP_TOKEN:GnkgwMcr3iqUq6kMc5VcYeXrnEf}
     open-api-base-url: ${FEISHU_OPEN_API_BASE_URL:https://open.feishu.cn/open-apis/bitable/v1/apps}
     tenant-access-token-url: ${FEISHU_TENANT_TOKEN_URL:https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal}
     batch-limit: ${FEISHU_BATCH_LIMIT:500}
@@ -14,7 +14,7 @@ feishu:
     # 多表格：每个 key 对应不同 table-id；需要单独数据源时在对应 table 下配置 retention
     tables:
       retention_daily:
-        table-id: ${FEISHU_TABLE_ID:tbldmYq9tgVarQLL}
+        table-id: ${FEISHU_TABLE_ID:tblzeA8kxfHHDvbC}    # 5-近7日留存数据（日更）
         columns:
           - feishu-field: 日期
             source-key: date
@@ -39,21 +39,21 @@ feishu:
             source-key: day6Rate
             default-value: "-"
       customer_ratio_daily:
-        table-id: ${FEISHU_TABLE_CUSTOMER_RATIO:tblGNEbmtR6oTIET}
+        table-id: ${FEISHU_TABLE_CUSTOMER_RATIO:tblOwkU8XsfwQS33}    # 3-新老客占比（日更）
         columns:
           - feishu-field: 字段
             source-key: label
           - feishu-field: 人数
             source-key: count
       new_customer_funnel_daily:
-        table-id: ${FEISHU_TABLE_NEW_FUNNEL:tblsgt15cfJJCYRH}
+        table-id: ${FEISHU_TABLE_NEW_FUNNEL:tblm6YLtTzn7LdNn}  # 6-新客漏斗（日更）
         columns:
           - feishu-field: 文本
             source-key: label
           - feishu-field: 数值
             source-key: value
       revenue_daily:
-        table-id: ${FEISHU_TABLE_REVENUE:tblQi8ssBMtx5j5I}
+        table-id: ${FEISHU_TABLE_REVENUE:tblwaXGtiftGqEC9}  # 4-订单支付统计（日更）
         columns:
           - feishu-field: 时间
             source-key: time
@@ -64,7 +64,7 @@ feishu:
           - feishu-field: 本月总成交金额（会员+算力）
             source-key: totalAmount
       sls_stats_daily:
-        table-id: ${FEISHU_TABLE_SLS_STATS:tbldCKw4kIa4UXjY}
+        table-id: ${FEISHU_TABLE_SLS_STATS:tblghC9iJX9zKboK}    # 1-数据源（日更）
         columns:
           - feishu-field: 日期
             source-key: date
