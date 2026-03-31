@@ -260,6 +260,22 @@ public class FeishuBitableController {
         }
     }
 
+    /**
+     * 手动触发“前一天”全量同步（用于测试，与定时任务一致）。
+     */
+    @PostMapping("/sync-all-yesterday")
+    public ResponseEntity<Map<String, Object>> syncAllYesterday() {
+        LocalDate date = LocalDate.now(ZONE_BEIJING).minusDays(1);
+        Map<String, Object> result = syncService.syncAllDailyByDate(date.toString());
+
+        Map<String, Object> resp = new LinkedHashMap<>();
+        resp.put("code", 0);
+        resp.put("msg", "sync all yesterday completed");
+        resp.put("date", date.toString());
+        resp.put("result", result);
+        return ResponseEntity.ok(resp);
+    }
+
     private static String defaultRetentionStartDateBeijing() {
         return LocalDate.now(ZONE_BEIJING)
                 .minusDays(DEFAULT_RETENTION_START_DAYS_AGO)

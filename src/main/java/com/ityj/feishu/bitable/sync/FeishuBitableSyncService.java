@@ -480,6 +480,63 @@ public class FeishuBitableSyncService {
         return 1;
     }
 
+    /**
+     * 执行飞书日更全量同步（按指定日期）。
+     * <p>
+     * 包含：
+     * <ul>
+     *   <li>retention_daily（startTime=endTime=date）</li>
+     *   <li>customer_ratio_daily（date）</li>
+     *   <li>new_customer_funnel_daily（date）</li>
+     *   <li>sls_stats_daily（date）</li>
+     *   <li>revenue_daily（本月月初~date）</li>
+     * </ul>
+     *
+     * @param dateStr 统计日期（yyyy-MM-dd）
+     * @return 每个任务的执行结果（行数或状态）
+     */
+    public Map<String, Object> syncAllDailyByDate(String dateStr) {
+        LocalDate date = LocalDate.parse(dateStr);
+        String dateText = date.toString();
+        String retentionStart = date.minusDays(6).toString();
+        String startOfMonth = date.withDayOfMonth(1).toString();
+
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("date", dateText);
+
+        try {
+            sync("retention_daily", retentionStart, dateText);
+            result.put("sync", "ok");
+        } catch (Exception ex) {
+            result.put("sync", "failed: " + ex.getMessage());
+        }
+
+        try {
+            result.put("customerRatioRows", syncCustomerRatio(dateText));
+        } catch (Exception ex) {
+            result.put("customerRatioRows", "failed: " + ex.getMessage());
+        }
+
+        try {
+            result.put("newCustomerFunnelRows", syncNewCustomerFunnel(dateText));
+        } catch (Exception ex) {
+            result.put("newCustomerFunnelRows", "failed: " + ex.getMessage());
+        }
+
+        try {
+            result.put("slsStatsRows", syncSlsStatsDaily(dateText, "sls_stats_daily"));
+        } catch (Exception ex) {
+            result.put("slsStatsRows", "failed: " + ex.getMessage());
+        }
+
+        try {
+            result.put("revenueStatsRows", syncRevenueStats(startOfMonth, dateText));
+        } catch (Exception ex) {
+            result.put("revenueStatsRows", "failed: " + ex.getMessage());
+        }
+        return result;
+    }
+
     private static Map<String, Object> buildFieldsForAppend(JSONObject item, List<ColumnBinding> bindings) {
         Map<String, Object> fields = new LinkedHashMap<>();
         if (bindings == null || bindings.isEmpty()) {

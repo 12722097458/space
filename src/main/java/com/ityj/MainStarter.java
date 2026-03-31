@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -15,6 +16,7 @@ import javax.net.ssl.X509TrustManager;
 import java.security.SecureRandom;
 
 @SpringBootApplication
+@EnableScheduling
 @EnableConfigurationProperties(FeishuBitableProperties.class)
 public class MainStarter {
     public static void main(String[] args) {
