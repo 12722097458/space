@@ -182,6 +182,30 @@ public class FeishuBitableController {
         return ResponseEntity.ok(resp);
     }
 
+    // T4-收入统计（Pro会员订阅人数、算力充值人数、本月总成交金额）
+    @GetMapping("/sync-revenue-stats")
+    public ResponseEntity<Map<String, Object>> syncRevenueStats(@RequestParam String date) {
+        LocalDate parsedDate;
+        try {
+            parsedDate = LocalDate.parse(date);
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "code", -1,
+                    "msg", "date 格式必须为 yyyy-MM-dd"
+            ));
+        }
+        String dateStr = parsedDate.toString();
+        int rows = syncService.syncRevenueStats(dateStr);
+
+        Map<String, Object> resp = new LinkedHashMap<>();
+        resp.put("code", 0);
+        resp.put("msg", "sync revenue stats completed");
+        resp.put("profileKey", "revenue_daily");
+        resp.put("date", dateStr);
+        resp.put("rows", rows);
+        return ResponseEntity.ok(resp);
+    }
+
     private static String defaultRetentionStartDateBeijing() {
         return LocalDate.now(ZONE_BEIJING)
                 .minusDays(DEFAULT_RETENTION_START_DAYS_AGO)

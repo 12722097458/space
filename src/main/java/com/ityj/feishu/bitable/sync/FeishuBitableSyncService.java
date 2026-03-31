@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -36,6 +37,9 @@ public class FeishuBitableSyncService {
 
     private static final String STATS_CUSTOMERS_API_URL =
             "http://localhost:8003/admin-api/user/sls-stats/stats-customers";
+
+    private static final String PAID_STATS_API_URL =
+            "http://localhost:8003/admin-api/course/order/stats-by-paid-at";
 
     private String currentFeishuAuth;
     private long tenantTokenExpiresAtEpochMs;
@@ -73,7 +77,7 @@ public class FeishuBitableSyncService {
         Set<String> warned = new HashSet<>();
 
         if (retentionData == null || retentionData.isEmpty()) {
-            System.out.println("[" + profileKey + "] 数据为空，跳过写入");
+            log.info("[{}] 数据为空，跳过写入", profileKey);
             return;
         }
         if (bindings == null || bindings.isEmpty()) {
@@ -81,20 +85,20 @@ public class FeishuBitableSyncService {
             return;
         }
 
-        System.out.println("[" + profileKey + "] 查到业务数据 " + retentionData.size() + " 条");
+        log.info("[{}] 查到业务数据 {} 条", profileKey, retentionData.size());
 
         List<String> recordIds = searchAllRecordIds(bitableBase);
-        System.out.println("[" + profileKey + "] 查到历史记录 " + recordIds.size() + " 条");
+        log.info("[{}] 查到历史记录 {} 条", profileKey, recordIds.size());
 
         if (!recordIds.isEmpty()) {
             batchDeleteRecords(bitableBase, recordIds);
-            System.out.println("[" + profileKey + "] 已清空表格历史数据");
+            log.info("[{}] 已清空表格历史数据", profileKey);
         }
 
         Set<String> existingFieldNames = fetchExistingFieldNames(bitableBase);
-        System.out.println("[" + profileKey + "] 飞书表字段数: " + existingFieldNames.size());
+        log.info("[{}] 飞书表字段数: {}", profileKey, existingFieldNames.size());
         batchCreateRecords(bitableBase, retentionData, existingFieldNames, bindings, warned);
-        System.out.println("[" + profileKey + "] 数据写入完成");
+        log.info("[{}] 数据写入完成", profileKey);
     }
 
     /**
@@ -154,6 +158,56 @@ public class FeishuBitableSyncService {
         } catch (Exception ex) {
             log.error("[{}] 解析留存数据接口响应出现异常", profileKey, ex);
             return Collections.emptyList();
+        }
+    }
+
+    /**
+     * 获取收入统计数据（订单按支付时间聚合）。
+     *
+     * @param profileKey 日志标识
+     * @param date       统计日期（yyyy-MM-dd）
+     * @return data 对象（JSON），若无数据则返回 null
+     */
+    private JSONObject fetchRevenueStats(String profileKey, String startDate, String endDate) {
+        String url = PAID_STATS_API_URL + "?startTime=" + startDate + "&endTime=" + endDate;
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", PANDA_ADMIN_API_AUTH);
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+        try {
+            log.info("[{}] 调用收入统计接口, url={}", profileKey, url);
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+            if (!response.getStatusCode().is2xxSuccessful()) {
+                log.error("[{}] 调用收入统计接口失败, httpStatus={}, body={}", profileKey,
+                        response.getStatusCode().value(), response.getBody());
+                return null;
+            }
+
+            String body = response.getBody();
+            if (body == null || body.isBlank()) {
+                log.warn("[{}] 收入统计接口返回空响应", profileKey);
+                return null;
+            }
+
+            JSONObject json = JSONUtil.parseObj(body);
+            int code = json.getInt("code", -1);
+            if (code != 0) {
+                log.error("[{}] 收入统计接口业务失败, code={}, msg={}", profileKey, code, json.getStr("msg"));
+                return null;
+            }
+
+            JSONObject data = json.getJSONObject("data");
+            if (data == null) {
+                log.info("[{}] 收入统计接口返回 data 为空", profileKey);
+                return null;
+            }
+            return data;
+        } catch (RestClientException ex) {
+            log.error("[{}] 调用收入统计接口出现异常", profileKey, ex);
+            return null;
+        } catch (Exception ex) {
+            log.error("[{}] 解析收入统计接口响应出现异常", profileKey, ex);
+            return null;
         }
     }
 
@@ -293,6 +347,45 @@ public class FeishuBitableSyncService {
             log.error("[{}] 解析客户统计接口响应出现异常", profileKey, ex);
             return null;
         }
+    }
+
+    /**
+     * 覆盖写入“收入统计”表格。
+     *
+     * @param date 所在月份任意一天（yyyy-MM-dd），按“当月月初~昨天”汇总
+     * @return 实际写入的行数
+     */
+    public int syncRevenueStats(String date) {
+        String profileKey = "revenue_daily";
+        FeishuTableProfile profile = resolveProfile(profileKey);
+        String bitableBase = props.bitableBaseUrlForTable(profile.getTableId());
+
+        LocalDate targetDate = LocalDate.parse(date);
+        LocalDate startOfMonth = targetDate.withDayOfMonth(1);
+        LocalDate yesterday = targetDate.minusDays(1);
+        if (yesterday.isBefore(startOfMonth)) {
+            yesterday = startOfMonth;
+        }
+
+        String start = startOfMonth.toString();
+        String end = yesterday.toString();
+
+        JSONObject data = fetchRevenueStats(profileKey, start, end);
+        if (data == null) {
+            log.warn("[{}] 收入统计 data 为空，跳过写入", profileKey);
+            return 0;
+        }
+
+        JSONObject row = new JSONObject();
+        row.set("time", data.getStr("endTime", date));
+        row.set("proMemberUserCount", data.getInt("proMemberUserCount", 0));
+        row.set("computeRechargeUserCount", data.getInt("computeRechargeUserCount", 0));
+        row.set("totalAmount", data.get("totalAmount"));
+
+        List<JSONObject> rows = Collections.singletonList(row);
+        List<ColumnBinding> bindings = profile.getColumns();
+        sync(profileKey, bitableBase, rows, bindings);
+        return rows.size();
     }
 
     /**
@@ -454,7 +547,7 @@ public class FeishuBitableSyncService {
             String resp = response.body();
             ensureHttpOk(response, "records/batch_delete");
             ensureFeishuSuccess(JSONUtil.parseObj(resp), "records/batch_delete");
-            System.out.println("删除第 " + (i / batchSize + 1) + " 批成功, 条数=" + batch.size());
+            log.info("删除第 {} 批成功, 条数={}", (i / batchSize + 1), batch.size());
         }
     }
 
@@ -481,7 +574,7 @@ public class FeishuBitableSyncService {
                 records.add(record);
             }
             if (records.isEmpty()) {
-                System.out.println("第 " + (i / batchSize + 1) + " 批无可写入字段，跳过");
+                log.info("第 {} 批无可写入字段，跳过", (i / batchSize + 1));
                 continue;
             }
 
@@ -499,7 +592,7 @@ public class FeishuBitableSyncService {
             String resp = response.body();
             ensureHttpOk(response, "records/batch_create");
             ensureFeishuSuccess(JSONUtil.parseObj(resp), "records/batch_create");
-            System.out.println("写入第 " + (i / batchSize + 1) + " 批成功, 条数=" + records.size());
+            log.info("写入第 {} 批成功, 条数={}", (i / batchSize + 1), records.size());
         }
     }
 
@@ -540,7 +633,7 @@ public class FeishuBitableSyncService {
             return;
         }
         if (warnedMissingFields.add(fieldName)) {
-            System.out.println("飞书表缺少字段，已跳过写入: " + fieldName);
+            log.info("飞书表缺少字段，已跳过写入: {}", fieldName);
         }
     }
 
@@ -592,7 +685,7 @@ public class FeishuBitableSyncService {
         }
 
         refreshTenantAccessTokenInternal();
-        System.out.println("检测到飞书 token 过期，已刷新 tenant_access_token 并重试");
+        log.info("检测到飞书 token 过期，已刷新 tenant_access_token 并重试");
 
         if (body == null) {
             return HttpRequest.get(url)

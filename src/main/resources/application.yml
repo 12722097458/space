@@ -52,6 +52,17 @@ feishu:
             source-key: label
           - feishu-field: 数值
             source-key: value
+      revenue_daily:
+        table-id: ${FEISHU_TABLE_REVENUE:tblQi8ssBMtx5j5I}
+        columns:
+          - feishu-field: 时间
+            source-key: time
+          - feishu-field: Pro会员订阅人数
+            source-key: proMemberUserCount
+          - feishu-field: 算力充值人数
+            source-key: computeRechargeUserCount
+          - feishu-field: 本月总成交金额（会员+算力）
+            source-key: totalAmount
 panda:
   jwt:
     location: classpath:panda.jks
