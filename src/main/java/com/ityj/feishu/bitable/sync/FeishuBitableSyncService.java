@@ -38,6 +38,12 @@ public class FeishuBitableSyncService {
     private static final String STATS_CUSTOMERS_API_URL =
             "http://localhost:8003/admin-api/user/sls-stats/stats-customers";
 
+    /**
+     * SLS 统计指标接口（单天），用于拼出飞书多维表“指标总览”一行数据。
+     */
+    private static final String STATS_METRICS_API_URL =
+            "http://admin.web.pandaai.online/admin-api/user/sls-stats/stats";
+
     private static final String PAID_STATS_API_URL =
             "http://localhost:8003/admin-api/course/order/stats-by-paid-at";
 
@@ -350,6 +356,62 @@ public class FeishuBitableSyncService {
     }
 
     /**
+     * 调用 SLS 指标统计接口，获取指定日期的完整数据行（包含 date 与 metrics）。
+     *
+     * @param profileKey 日志标识
+     * @param date       统计日期（yyyy-MM-dd）
+     * @return metrics 对象（JSON），若无数据则返回 null
+     */
+    private JSONObject fetchSlsStatsRow(String profileKey, String date) {
+        String url = STATS_METRICS_API_URL + "?startTime=" + date + "&endTime=" + date;
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", PANDA_ADMIN_API_AUTH);
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+        try {
+            log.info("[{}] 调用 SLS 指标统计接口, url={}", profileKey, url);
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+            if (!response.getStatusCode().is2xxSuccessful()) {
+                log.error("[{}] 调用 SLS 指标统计接口失败, httpStatus={}, body={}", profileKey,
+                        response.getStatusCode().value(), response.getBody());
+                return null;
+            }
+
+            String body = response.getBody();
+            if (body == null || body.isBlank()) {
+                log.warn("[{}] SLS 指标统计接口返回空响应", profileKey);
+                return null;
+            }
+
+            JSONObject json = JSONUtil.parseObj(body);
+            int code = json.getInt("code", -1);
+            if (code != 0) {
+                log.error("[{}] SLS 指标统计接口业务失败, code={}, msg={}", profileKey, code, json.getStr("msg"));
+                return null;
+            }
+
+            JSONArray dataArr = json.getJSONArray("data");
+            if (dataArr == null || dataArr.isEmpty()) {
+                log.info("[{}] SLS 指标统计接口返回 data 为空", profileKey);
+                return null;
+            }
+
+            JSONObject first = dataArr.getJSONObject(0);
+            if (first == null) {
+                log.warn("[{}] SLS 指标统计接口 data[0] 为空", profileKey);
+                return null;
+            }
+            return first;
+        } catch (RestClientException ex) {
+            log.error("[{}] 调用 SLS 指标统计接口出现异常", profileKey, ex);
+            return null;
+        } catch (Exception ex) {
+            log.error("[{}] 解析 SLS 指标统计接口响应出现异常", profileKey, ex);
+            return null;
+        }
+    }
+
+    /**
      * 覆盖写入“收入统计”表格。
      *
      * @param date 所在月份任意一天（yyyy-MM-dd），按“当月月初~昨天”汇总
@@ -386,6 +448,51 @@ public class FeishuBitableSyncService {
         List<ColumnBinding> bindings = profile.getColumns();
         sync(profileKey, bitableBase, rows, bindings);
         return rows.size();
+    }
+
+    /**
+     * 追加写入“用户 SLS 指标总览”表格：每次调用在表末尾新增一行，不清空历史数据。
+     *
+     * @param dateStr    统计日期（yyyy-MM-dd）
+     * @param profileKey 多维表 profileKey，例如 {@code sls_stats_daily}
+     * @return 实际写入的行数（成功则为 1，失败/无数据为 0）
+     */
+    public int syncSlsStatsDaily(String dateStr, String profileKey) {
+        LocalDate.parse(dateStr);
+
+        FeishuTableProfile profile = resolveProfile(profileKey);
+
+        JSONObject row = fetchSlsStatsRow(profileKey, dateStr);
+        if (row == null) {
+            log.warn("[{}] SLS 指标 data 为空，跳过写入", profileKey);
+            return 0;
+        }
+
+        Map<String, Object> fields = buildFieldsForAppend(row, profile.getColumns());
+        if (fields.isEmpty()) {
+            log.warn("[{}] 构造出的字段 Map 为空，跳过写入", profileKey);
+            return 0;
+        }
+
+        appendRecord(profileKey, fields);
+        return 1;
+    }
+
+    private static Map<String, Object> buildFieldsForAppend(JSONObject item, List<ColumnBinding> bindings) {
+        Map<String, Object> fields = new LinkedHashMap<>();
+        if (bindings == null || bindings.isEmpty()) {
+            return fields;
+        }
+        for (ColumnBinding b : bindings) {
+            Object val = extractValue(item, b.getSourceKey());
+            if (val == null && b.getDefaultValue() != null) {
+                val = b.getDefaultValue();
+            }
+            if (val != null) {
+                fields.put(b.getFeishuField(), val);
+            }
+        }
+        return fields;
     }
 
     /**

@@ -63,6 +63,75 @@ feishu:
             source-key: computeRechargeUserCount
           - feishu-field: 本月总成交金额（会员+算力）
             source-key: totalAmount
+      sls_stats_daily:
+        table-id: ${FEISHU_TABLE_SLS_STATS:tbldCKw4kIa4UXjY}
+        columns:
+          - feishu-field: 日期
+            source-key: date
+          - feishu-field: 注册数
+            source-key: metrics.metricRegisterCount
+          - feishu-field: 日活
+            source-key: metrics.metricDau
+          - feishu-field: 访问量
+            source-key: metrics.metricVisitCount
+          - feishu-field: 新客访问量
+            source-key: metrics.metricNewUserVisitCount
+          - feishu-field: 周活
+            source-key: metrics.metricWau
+          - feishu-field: 月活
+            source-key: metrics.metricMau
+          - feishu-field: 新客留存
+            source-key: metrics.metricNewUserRetention
+          - feishu-field: 老客留存
+            source-key: metrics.metricOldUserRetention
+          - feishu-field: 流失回流
+            source-key: metrics.metricReactivatedUsers
+          - feishu-field: T0创建
+            source-key: metrics.metricCreatedT0Count
+          - feishu-field: T7创建
+            source-key: metrics.metricCreatedT7Count
+          - feishu-field: 登录验证
+            source-key: metrics.metricLoginVerificationCount
+          - feishu-field: 工作流创建人数
+            source-key: metrics.metricWorkflowCreateUsers
+          - feishu-field: 工作流运行人数
+            source-key: metrics.metricWorkflowRunUsers
+          - feishu-field: 工作流发布人数
+            source-key: metrics.metricWorkflowPublishUsers
+          - feishu-field: 工作流订阅人数
+            source-key: metrics.metricWorkflowSubscribeUsers
+          - feishu-field: 因子应用人数
+            source-key: metrics.metricFactorApplyUsers
+          - feishu-field: 策略应用人数
+            source-key: metrics.metricStrategyApplyUsers
+          - feishu-field: 工作流运行次数
+            source-key: metrics.metricWorkflowRunCount
+          - feishu-field: 工作流运行成功次数
+            source-key: metrics.metricWorkflowRunSuccessCount
+          - feishu-field: T1留存率
+            source-key: metrics.metricRetentionRateT1
+          - feishu-field: T7留存率
+            source-key: metrics.metricRetentionRateT7
+          - feishu-field: T15留存率
+            source-key: metrics.metricRetentionRateT15
+          - feishu-field: T30留存率
+            source-key: metrics.metricRetentionRateT30
+          - feishu-field: T1留存活跃
+            source-key: metrics.metricRetentionT1ActiveUsers
+          - feishu-field: T1留存注册
+            source-key: metrics.metricRetentionT1RegisterUsers
+          - feishu-field: T7留存活跃
+            source-key: metrics.metricRetentionT7ActiveUsers
+          - feishu-field: T7留存注册
+            source-key: metrics.metricRetentionT7RegisterUsers
+          - feishu-field: T15留存活跃
+            source-key: metrics.metricRetentionT15ActiveUsers
+          - feishu-field: T15留存注册
+            source-key: metrics.metricRetentionT15RegisterUsers
+          - feishu-field: T30留存活跃
+            source-key: metrics.metricRetentionT30ActiveUsers
+          - feishu-field: T30留存注册
+            source-key: metrics.metricRetentionT30RegisterUsers
 panda:
   jwt:
     location: classpath:panda.jks

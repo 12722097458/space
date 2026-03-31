@@ -206,6 +206,52 @@ public class FeishuBitableController {
         return ResponseEntity.ok(resp);
     }
 
+    /**
+     * 追加写入“用户 SLS 指标总览”多维表：每次调用在表尾新增一行（不清空历史数据）。
+     *
+     * <p>示例：
+     * <pre>
+     * POST /feishu-bitable/sync-sls-stats?date=2026-03-30
+     * POST /feishu-bitable/sync-sls-stats?date=2026-03-30&profileKey=sls_stats_daily
+     * </pre>
+     */
+    @PostMapping("/sync-sls-stats")
+    public ResponseEntity<Map<String, Object>> syncSlsStats(
+            @RequestParam String date,
+            @RequestParam(required = false, defaultValue = "sls_stats_daily") String profileKey) {
+        LocalDate parsedDate;
+        try {
+            parsedDate = LocalDate.parse(date);
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "code", -1,
+                    "msg", "date 格式必须为 yyyy-MM-dd"
+            ));
+        }
+        String dateStr = parsedDate.toString();
+        try {
+            int rows = syncService.syncSlsStatsDaily(dateStr, profileKey);
+
+            Map<String, Object> resp = new LinkedHashMap<>();
+            resp.put("code", 0);
+            resp.put("msg", "sync sls stats completed");
+            resp.put("profileKey", profileKey);
+            resp.put("date", dateStr);
+            resp.put("rows", rows);
+            return ResponseEntity.ok(resp);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(Map.of(
+                    "code", -1,
+                    "msg", ex.getMessage() != null ? ex.getMessage() : "bad request"
+            ));
+        } catch (IllegalStateException ex) {
+            return ResponseEntity.status(502).body(Map.of(
+                    "code", -1,
+                    "msg", ex.getMessage() != null ? ex.getMessage() : "upstream error"
+            ));
+        }
+    }
+
     private static String defaultRetentionStartDateBeijing() {
         return LocalDate.now(ZONE_BEIJING)
                 .minusDays(DEFAULT_RETENTION_START_DAYS_AGO)
