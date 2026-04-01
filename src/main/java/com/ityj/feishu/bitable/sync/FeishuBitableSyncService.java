@@ -498,14 +498,14 @@ public class FeishuBitableSyncService {
     public Map<String, Object> syncAllDailyByDate(String dateStr) {
         LocalDate date = LocalDate.parse(dateStr);
         String dateText = date.toString();
-        String retentionStart = date.minusDays(6).toString();
+        String retentionStart = date.minusDays(7).toString();
         String startOfMonth = date.withDayOfMonth(1).toString();
 
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("date", dateText);
 
         try {
-            sync("retention_daily", retentionStart, dateText);
+            sync("retention_daily", retentionStart, date.minusDays(1).toString());
             result.put("sync", "ok");
         } catch (Exception ex) {
             result.put("sync", "failed: " + ex.getMessage());

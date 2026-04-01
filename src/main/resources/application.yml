@@ -38,6 +38,9 @@ feishu:
           - feishu-field: 第6天
             source-key: day6Rate
             default-value: "-"
+          - feishu-field: 第7天
+            source-key: day7Rate
+            default-value: "-"
       customer_ratio_daily:
         table-id: ${FEISHU_TABLE_CUSTOMER_RATIO:tblOwkU8XsfwQS33}    # 3-新老客占比（日更）
         columns:
