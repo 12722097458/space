@@ -276,22 +276,22 @@ public class FeishuBitableSyncService {
         List<JSONObject> rows = new ArrayList<>(4);
 
         JSONObject visitRow = new JSONObject();
-        visitRow.set("label", "新客访问");
+        visitRow.set("label", "1_新客访问");
         visitRow.set("value", metrics.getInt("newVisitorVisits", 0));
         rows.add(visitRow);
 
         JSONObject verifyRow = new JSONObject();
-        verifyRow.set("label", "验证");
+        verifyRow.set("label", "2_验证");
         verifyRow.set("value", metrics.getInt("verifications", 0));
         rows.add(verifyRow);
 
         JSONObject registerRow = new JSONObject();
-        registerRow.set("label", "注册");
+        registerRow.set("label", "3_注册");
         registerRow.set("value", metrics.getInt("registrations", 0));
         rows.add(registerRow);
 
         JSONObject t0Row = new JSONObject();
-        t0Row.set("label", "T0创建");
+        t0Row.set("label", "4_T0创建");
         t0Row.set("value", metrics.getInt("t0WorkflowCreations", 0));
         rows.add(t0Row);
 

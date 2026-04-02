@@ -4,8 +4,8 @@ server:
 # 飞书多维表格（飞书连接参数可用环境变量覆盖）
 feishu:
   bitable:
-    app-id: ${FEISHU_APP_ID:cli_a94fb5909138dbde}
-    app-secret: ${FEISHU_APP_SECRET:F5pbn33ngrK1YX4zpC80ibezKCKp1gf7}
+    app-id: ${FEISHU_APP_ID:}
+    app-secret: ${FEISHU_APP_SECRET:}
     app-token: ${FEISHU_APP_TOKEN:GnkgwMcr3iqUq6kMc5VcYeXrnEf}
     open-api-base-url: ${FEISHU_OPEN_API_BASE_URL:https://open.feishu.cn/open-apis/bitable/v1/apps}
     tenant-access-token-url: ${FEISHU_TENANT_TOKEN_URL:https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal}

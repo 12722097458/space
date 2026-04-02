@@ -26,10 +26,11 @@ public class FeishuBitableDailySyncScheduler {
      */
     @Scheduled(cron = "0 0 8 * * *", zone = "Asia/Shanghai")
     public void syncYesterdayAtMorning() {
-        LocalDate yesterday = LocalDate.now(ZONE_BEIJING).minusDays(1);
-        String dateStr = yesterday.toString();
-        log.info("[feishu-bitable-scheduler] start daily sync, date={}", dateStr);
-        Map<String, Object> result = syncService.syncAllDailyByDate(dateStr);
-        log.info("[feishu-bitable-scheduler] finished daily sync, result={}", result);
+        return;
+//        LocalDate yesterday = LocalDate.now(ZONE_BEIJING).minusDays(1);
+//        String dateStr = yesterday.toString();
+//        log.info("[feishu-bitable-scheduler] start daily sync, date={}", dateStr);
+//        Map<String, Object> result = syncService.syncAllDailyByDate(dateStr);
+//        log.info("[feishu-bitable-scheduler] finished daily sync, result={}", result);
     }
 }
